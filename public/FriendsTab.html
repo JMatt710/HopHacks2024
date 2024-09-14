@@ -14,7 +14,7 @@
 </head>
 
 
-<body onload="" ontouchstart="">
+<body onload="displayAllFriendsListItems()" ontouchstart="">
     <div class="navbar upper">
         <table class="navcont" style="font-size: 1.9rem">
             <tr style="width: 100vw;">
@@ -23,8 +23,6 @@
                     <p style="font-weight: bold !important; text-align: left !important">Friends</p>
                 </td>
                 <td style="width: 30%"></td>
-                <td style="width: 8%" class="menuicon" onclick="togglePopup();" id="plus">+</td>
-                <td style="width: 8%" class="menuicon" onclick="toggleMenuFriends();" id="hamburger">&#8801;</td>
                 <td style="width: 4%"></td>
             </tr>
         </table>
@@ -32,93 +30,17 @@
     <div style="height: 9.5vh">
         <!-- padding space -->
     </div>
-    <div class="menu hide" id="menu" style="height: 35% !important">
-        <table style="width: 100% !important;">
-            <tr>
-                <td>
-                    <br/><br/><br/><br/>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <ul style="padding-left: 5%">
-                        <li class="menuitem" onclick="togglePopupPersons();" id="persons">Personas</li>
-                        <li class="menuitem" onclick="togglePopupMeals();" id="mealTypes">Meal Type</li>
-                        <li class="menuitem" onclick="togglePopupFlavors();" id="flavors">Flavors</li>
-                        <li class="menuitem" onclick="togglePopupDiet();" id="flavors">Dietary Constraint</li>
-                    </ul>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div style = "width: 100%; margin: auto" id = "recipeContainer">
-        <div id="resultRecipeList"></div>
-    </div>
+  
     
-    <div class="overlay" onclick="togglePopupPersons()" id="overlayPersons"></div>
-    <div class="popup" id="popupPersons">
-        <span class="close-button" onclick="togglePopupPersons()">&times;</span>
-        <h2>Personas</h2>
-        <input type="checkbox" id="p1" name="p1" value="p1">
-        <label for="p1">Person 1</label><br>
-        <input type="checkbox" id="p2" name="p2" value="p2">
-        <label for="p2">Person 2</label><br>
-        <input type="checkbox" id="p3" name="p3" value="p3">
-        <label for="p3">Person 3</label><br><br>
-    </div>
-
-
-    <div class="overlay" onclick="togglePopupMeals()" id="overlayMeals"></div>
-    <div class="popup" id="popupMeals">
-        <span class="close-button" onclick="togglePopupMeals()">&times;</span>
-        <h2>Meal Types</h2>
-        <input type="checkbox" id="m1" name="m1" value="m1">
-        <label for="m1">Breakfast</label><br>
-        <input type="checkbox" id="m2" name="m2" value="m2">
-        <label for="m2">Lunch</label><br>
-        <input type="checkbox" id="m3" name="m1" value="m3">
-        <label for="m3">Dinner</label><br>
-        <input type="checkbox" id="m4" name="m4" value="m4">
-        <label for="m4">Appetizer</label><br>
-        <input type="checkbox" id="m5" name="m5" value="m5">
-        <label for="m5">Dessert</label><br>
-        <input type="checkbox" id="m6" name="m6" value="m6">
-        <label for="m6">Snack</label><br>
-    </div>
-
-
-    <div class="overlay" onclick="togglePopupDiet()" id="overlayDiet"></div>
-    <div class="popup" id="popupDiet">
-        <span class="close-button" onclick="togglePopupDiet()">&times;</span>
-        <h2>Dietary Restrictions</h2>
-        <input type="checkbox" id="f1" name="d1" value="d1">
-        <label for="d1">Gluten Free</label><br>
-        <input type="checkbox" id="d2" name="d2" value="d2">
-        <label for="d2">Vegetarian</label><br>
-        <input type="checkbox" id="d3" name="d3" value="d3">
-        <label for="d3">Vegan</label><br>
-        <input type="checkbox" id="d4" name="d4" value="d4">
-        <label for="d4">Nut Free</label><br>
-    </div>
-
-    <div class="overlay" onclick="togglePopupFlavors()" id="overlayFlavors"></div>
-    <div class="popup" id="popupFlavors">
-        <span class="close-button" onclick="togglePopupFlavors()">&times;</span>
-        <h2>Flavors</h2>
-        <input type="checkbox" id="f1" name="f1" value="f1">
-        <label for="f1">Sweet</label><br>
-        <input type="checkbox" id="f2" name="f2" value="f2">
-        <label for="f2">Salty</label><br>
-        <input type="checkbox" id="f3" name="f3" value="f3">
-        <label for="f3">Spicy</label><br>
-        <input type="checkbox" id="f4" name="f4" value="f4">
-        <label for="f4">Sour</label><br>
-    </div>
-    
+    <!-- <div style = "width: 100%; margin: auto" id = "friendContainer">
+        <div id="resultFriendList"></div>
+    </div> -->
 
     <!-- PUT PAGE CONTENT HERE -->
-    <div id="resultRecipeList"></div>
-    <div class = "oskeyboard" id = "osKeyboard"><h3 style = "color: #ffffff !important; text-decoration: underline; cursor: pointer" onclick = "hideOSKeyboard()">[Click here to close keyboard.]</h3></div>
+    <div style = "width: 100%">
+        <div id="resultFriendsList"></div>
+    </div>
+
     <div class="navbar lower">
         <table class="navcont">
             <tr style="width: 100vw;">

@@ -1,19 +1,50 @@
 class User {
-    static foodArr;
-    constructor(userName, foodArr, MessagingArr, FriendsArr, idNum) {
-        this.userName = userName;
-        this.foodArr = foodArr;
-        this.MessagingArr = MessagingArr;
-        this.FriendsArr=FriendsArr;
-        this.idNum = idNum
+    static FriendsArr;
+    constructor(Name, Age, InterestsArr, AgeRangeArr, LocationArr, FriendsArr, LocationEnabled, UserName, bioInput) {
+        this.Name = Name;
+        this.Age = Age;
+        this.InterestsArr = InterestsArr;
+        this.AgeRangeArr = AgeRangeArr;
+        this.FriendsArr = FriendsArr;
+        this.LocationArr = LocationArr;
+        this.LocationEnabled = LocationEnabled;
+        this.UserName = UserName;
+        this.bioInput = bioInput;
     }
 }
 
 let user1 = new User();
-user1.userName = "You"
-user1.MessagingArr = new Array();
-user1.FriendsArr = new Array();
+user1.Name = "Isabella";
+user1.Age = 23;
+user1.LocationEnabled = true;
+user1.userName = "isabella_neel";
+user1.bioInput = "I want to meet people!";
 
+user1.FriendsArr = new Array();
+user1.FriendsArr.push("Nithin");
+user1.FriendsArr.push("Justin");
+user1.FriendsArr.push("Ryan");
+
+user1.InterestsArr = new Array(); 
+user1.InterestsArr.push("Soccer");
+
+user1.AgeRangeArr = new Array();
+user1.AgeRangeArr.push(18);
+user1.AgeRangeArr.push(122);
+
+user1.LocationArr = new Array();
+user1.LocationArr.push(6548);
+user1.LocationArr.push(1538);
+
+function updateUserInfo(){
+    user1.Name = document.getElementById("nameInput");
+    user1.Age = document.getElementById("ageInput");
+    user1.InterestsArr = document.getElementById("interestsInput");
+    user1.AgeRangeArr[0] = document.getElementById("ageRangeMinInput");
+    user1.AgeRangeArr[1] = document.getElementById("ageRangeMaxInput");
+    user1.LocationEnabled = document.getElementById("locationEnabledInput");
+    user1.bioInput = document.getElementById("bioInput");
+}
 
 /*MAP FUNCTIONS START*/
 function toggleMessagingForm(){
@@ -35,6 +66,37 @@ function toggleForm() { // opens/closes the form to enter food items to your Map
         myForm.className = "form-popup fpshow";
         plus.className = "menuicon toggled";
     } 
+}
+
+function displayAllFriendsListItems(){
+    console.log(":((((((((((((((((((((((");
+    console.log(user1.FriendsArr[0]);
+    var results = "<table class = \"carttable\" >";
+   
+    let num = 0;
+    for(let i in user1.FriendsArr){
+        results = results + 
+        "<tr class = \"cartitem\">" +
+            "<td id = \"foodWidth" + i + "\" + style = \"width: 86%\">";
+            results = results + "<h3 style = \"text-decoration: none\" id = \"itemLabel" + i + "\">" +  user1.FriendsArr[i] /*+ " "  + getProfilePic.(user1.FriendsArr[i])*/ + "</h3>";
+            "</td>" +
+            "<td style = \"width: 7%; text-align: center\" onclick = \"deleteItem(this.parentElement," + i + ")\">" +
+                "<h3>x</h3>" +
+            "</td>" +
+        "</tr>";
+        
+        num = num + 1;
+    }
+        results = results + "</table>";
+    
+    if (num == 0){
+        results = "<div style = \"width: 91%; margin: auto\"><p style = \"font-size: 1.25rem\">You currently have no friends, go out there and meetcute! </p></div>" + results
+    }
+    
+    //myFormFriends.className = "form-popup-friends";
+    //plus.className = "menuicon";
+    //flushInputsFriendsList();
+    document.getElementById("resultFriendsList").innerHTML = results;
 }
 
 function notYetImplemented(i, j){

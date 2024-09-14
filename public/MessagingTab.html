@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Messaging</title>
     <link rel="stylesheet" href="styles/style.css" />
@@ -10,7 +11,8 @@
     </style>-->
     <script type="text/javascript" src="scripts/menu.js"></script>
     <script src="scripts/Functionality.js"></script>
-    <script src="https://cdn.tiny.cloud/1/q9knxqt0nvrqcd811g9dgmd4axvkn02tjlz7481z3jayyfh0/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/q9knxqt0nvrqcd811g9dgmd4axvkn02tjlz7481z3jayyfh0/tinymce/7/tinymce.min.js"
+        referrerpolicy="origin"></script>
     <script>
         tinymce.init({
             selector: "#mytextarea",
@@ -21,18 +23,40 @@
             placeholder: "Enter message . . .",
             toolbar: "bold italic strikethrough link numlist bullist blockquote emoticons image mySendButton",
             setup: function (editor) {
+                // Detect key presses in the editor
+                editor.on('keydown', function (e) {
+                    var name = e.key;
+                    var char = e.code;
+
+                    if (name === "Enter" && char === "Enter") {
+                        if (e.shiftKey) {
+                            // Insert a newline (break element) when Shift+Enter is pressed
+                            editor.execCommand('mceInsertContent', false, '<br><br>');
+                            e.preventDefault(); // Prevent the default behavior
+                        } else {
+                            // Send the message when only Enter is pressed
+                            alert(editor.getContent());
+                            editor.resetContent();
+                            e.preventDefault(); // Prevent default behavior
+                        }
+                    }
+                });
+
+                // Create the 'Send' button
                 editor.ui.registry.addButton("mySendButton", {
                     tooltip: "Send Message",
                     text: "Send",
                     onAction: function () {
+                        // Trigger the send action
                         alert(editor.getContent());
                         editor.resetContent();
                     },
                 });
-            },
+            }
         });
     </script>
 </head>
+
 <body>
     <div class="navbar upper">
         <table class="navcont" style="font-size: 1.9rem">
@@ -52,14 +76,16 @@
 
     <!-- Textarea for TinyMCE -->
     <div class="textarea-container">
-        <textarea id="mytextarea"></textarea>
+        <form>
+            <textarea id="mytextarea"></textarea>
+        </form>
     </div>
 
     <div class="menu hide" id="menu">
         <table style="width: 100% !important;">
             <tr>
                 <td>
-                    <br/><br/><br/><br/>
+                    <br /><br /><br /><br />
                 </td>
             </tr>
             <tr>
@@ -80,13 +106,22 @@
         <table class="navcont">
             <tr style="width: 100vw;">
                 <td style="width: 5%"></td>
-                <td class="navitem" onclick="location.href='index.html'"><p>Map</p></td>
-                <td class="navitem" onclick="location.href='FriendsTab.html'"><p>Friends</p></td>
-                <td class="navitem selected"><p>Messaging</p></td>
-                <td class="navitem" onclick="location.href='UserProfileTab.html'"><p>Profile</p></td>
+                <td class="navitem" onclick="location.href='index.html'">
+                    <p>Map</p>
+                </td>
+                <td class="navitem" onclick="location.href='FriendsTab.html'">
+                    <p>Friends</p>
+                </td>
+                <td class="navitem selected">
+                    <p>Messaging</p>
+                </td>
+                <td class="navitem" onclick="location.href='UserProfileTab.html'">
+                    <p>Profile</p>
+                </td>
                 <td style="width: 5%"></td>
             </tr>
         </table>
     </div>
 </body>
+
 </html>
