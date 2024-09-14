@@ -2,8 +2,9 @@
   "name": "meetcute",
   "version": "1.0.0",
   "description": "Find a meetcute to see new people",
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
+    "start": "node src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/JMatt710/HopHacks2024/issues"
   },
-  "homepage": "https://github.com/JMatt710/HopHacks2024#readme"
+  "homepage": "https://github.com/JMatt710/HopHacks2024#readme",
+  "dependencies": {
+    "express": "^4.21.0"
+  }
 }
