@@ -5,11 +5,7 @@ class MapController {
     }
   
     initMap() {
-      this.map.locate({ setView: true, watch: true, maxZoom: 16 }); //prompts browser
-      this.populateMap();
-    }
-  
-    populateMap() {
+      this.map.locate({ setView: true, maxZoom: 16 }); //prompts browser
       this.map.on('locationfound', (e) => {
         var lat = e.latlng.lat; // Latitude
         var lng = e.latlng.lng; // Longitude
@@ -25,7 +21,6 @@ class MapController {
       // Add the OpenStreetMap tile layer to the map
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(this.map);
   
       // Handle location error
