@@ -1,11 +1,18 @@
 class User {
 
-    constructor(db) {
-        this.users = db.collection('users');
-        this.users.createIndex({ username: 1 });
-        this.users.createIndex({ location: "2dsphere"})
+    constructor(collection) {
+        this.users = collection;
     }
 
+    async init() {
+        await this.users.createIndex({ username: 1 });
+        await this.users.createIndex({ location: "2dsphere"});
+    }
+
+    /* user will be null if it isn't found 
+        return true if not null (found)
+        return false if null (not found)
+        */
     async checkUsernameExists(username) {
         try {
             const user = await this.users.findOne({ username: username });
@@ -18,10 +25,13 @@ class User {
     }
 
     async createUser(age, first_name, last_name, username) {
-
-        if(!checkUsernameExists(username)) {
+        const usernameExists = await this.checkUsernameExists(username);
+        if(!usernameExists) {
             const user = {
-                "location": NaN,
+                "location": {
+                    "type": "Point",
+                    "coordinates": [0,0]
+                },
                 "interests": [],
                 "age": age,
                 "age_range": [18, 125],
@@ -311,7 +321,7 @@ class User {
             Commit changes to Mongo. Return true/false based
             on success.
         */
-        async removeFriend(username, friend_username) {
+        async removeRejectedFriend(username, friend_username) {
             try {
                  // Remove the interest to the interests array
                 const result = await this.users.updateOne(
@@ -365,3 +375,5 @@ class User {
         return results;
     }
 }
+
+module.exports = User;
