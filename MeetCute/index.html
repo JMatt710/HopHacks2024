@@ -10,9 +10,11 @@
         </style>-->
         <script type="text/javascript" src="menu.js"></script>
         <script src="Functionality.js"></script>
+        <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+        <script src="map.js"></script>
     </head>
-  
-    <body onload = "" ontouchstart = "">
+    <body id="map"ontouchstart = "">
+        
         <div class = "navbar upper">
             <table class = "navcont" style = "font-size: 1.9rem">
                 <tr style = "width: 100vw;">
@@ -150,6 +152,9 @@
                 </tr>
             </table>
         </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', new MapController());
+        </script>
     </body>
 </html>
 

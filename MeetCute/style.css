@@ -101,6 +101,10 @@ button{
     transition: color 0.25s ease;
 }   
 
+#map {
+    height: 75%;
+}
+
 .selected{
     background-color: #ecf0f1 !important;
     border-bottom: 3px solid #1f628e !important;
