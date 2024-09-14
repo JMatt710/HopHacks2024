@@ -10,10 +10,13 @@
         </style>-->
         <script type="text/javascript" src="menu.js"></script>
         <script src="Functionality.js"></script>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""/>
         <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
         <script src="map.js"></script>
     </head>
-    <body id="map"ontouchstart = "">
+    <body ontouchstart = "">
         
         <div class = "navbar upper">
             <table class = "navcont" style = "font-size: 1.9rem">
@@ -27,9 +30,9 @@
                 </tr>
             </table>
         </div>
-        <div style = "height: 9.5vh">
+        <!-- <div style = "height: 9.5vh"> -->
             <!-- padding space -->
-        </div>
+        <!-- </div> -->
         <div class="menu hide" id="menu">
             <table style="width: 100% !important;">
                 <tr>
@@ -140,6 +143,7 @@
         <div style = "height: 9.5vh">
             <!-- padding space -->
         </div>
+        <div id="map"></div>
         <div class = "navbar lower">
             <table class = "navcont">
                 <tr style = "width: 100vw;">

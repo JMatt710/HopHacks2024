@@ -4,6 +4,10 @@ body{
     font-family: 'Lato', Helvetica, sans-serif;
 }
 
+#map {
+    height: 79vh;
+}
+
 h1{
     text-align: center;
     font-size: 45px;
@@ -100,10 +104,6 @@ button{
     color: #3498db !important;
     transition: color 0.25s ease;
 }   
-
-#map {
-    height: 75%;
-}
 
 .selected{
     background-color: #ecf0f1 !important;
