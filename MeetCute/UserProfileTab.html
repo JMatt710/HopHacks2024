@@ -12,7 +12,7 @@
         <script src="Functionality.js"></script>
     </head>
 
-    <body onload="fill_info()" ontouchstart = "">
+    <body onload="" ontouchstart = "">
         <div class = "navbar upper">
             <table class = "navcont" style = "font-size: 1.9rem">
                 <tr style = "width: 100vw;">
@@ -37,8 +37,8 @@
                 <tr>
                     <td>
                         <ul style = "padding-left: 5%">
-                            <li class="menuitem" onclick="toggleProfileForm(); fill_info(); toggleMenu();">Edit Profile</li>
-                            <li class="menuitem" onclick="close_window(); toggleMenu()" style = "color: #d34233">Logout</li>
+                            <li class="menuitem" onclick=" toggleMenu(); toggleProfileForm();">Edit Profile</li>
+                            <li class="menuitem" onclick="toggleMenu(); close_window();" style = "color: #d34233">Logout</li>
                         </ul>
                     </td>
                 </tr>
@@ -59,10 +59,10 @@
                     </tr>
                     <tr>
                         <td style = "width: 25%">
-                            <label for="allergensInput"><span>Allergens</span></label>
+                            <label for="ageInput"><span>Age</span></label>
                         </td>
                         <td style = "width: 75%">
-                            <input type="text" placeholder="Enter Allergy Info" name="allergensInput" value="" id="allergensInput" onclick = ""/>
+                            <input type="number" placeholder="Enter Age Info" name="ageInput" value="" id="ageInput" onclick = ""/>
                         </td>
                     </tr>
                     <tr>
@@ -70,7 +70,7 @@
                             <label for="preferencesInput"><span>Preferences</span></label>    
                         </td>
                         <td style = "width: 75%">
-                            <input type="text" placeholder="Enter Preferences" name="preferencesInput" value="" id="preferencesInput" onclick = ""/>
+                            <input type="text" placeholder="Enter Interests" name="interestsInput" value="" id="interestsInput" onclick = ""/>
                         </td>
                     </tr>
                     <tr>
@@ -83,16 +83,15 @@
                     </tr>
                     <tr>
                         <td style = "width: 25%">
-                            <label for="notesInput"><span>Notes</span></label>
+                            <label for="bioInput"><span>Bio</span></label>
                         </td>
                         <td style = "width: 75%">
-                            <input type="text" placeholder="Enter Some Notes" name="notesInput" value="" id="notesInput" onclick = ""/>
+                            <input type="text" placeholder="Tell me about yourself!" name="bioInput" value="" id="bioInput" onclick = ""/>
                         </td>
                     </tr>
                 </table>
                 <br/>
-                <button type="button" class="btn" onclick="update_profile_info(); toggleProfileForm(); hideOSKeyboard();">Enter</button>
-                <button type="button" class="btn cancel" onclick="fill_info(); toggleProfileForm(); hideOSKeyboard();">Close</button>     
+                <button type="button" class="btn cancel" onclick="toggleProfileForm(); updateUserInfo();">Close</button>     
             </form>
         </div>
         <!-- PUT PAGE CONTENT HERE -->
