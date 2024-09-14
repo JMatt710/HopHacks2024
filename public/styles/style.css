@@ -26,8 +26,8 @@ button{
 
 @font-face {
     font-family: 'Lato';
-    src: url('fonts/lato-regular-webfont.woff2') format('woff2'),
-         url('fonts/lato-regular-webfont.woff') format('woff');
+    src: url('../fonts/lato-regular-webfont.woff2') format('woff2'),
+         url('../fonts/lato-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -35,8 +35,8 @@ button{
 
 @font-face {
     font-family: 'Lato';
-    src: url('fonts/lato-bold-webfont.woff2') format('woff2'),
-         url('fonts/lato-bold-webfont.woff') format('woff');
+    src: url('../fonts/lato-bold-webfont.woff2') format('woff2'),
+         url('../fonts/lato-bold-webfont.woff') format('woff');
     font-weight: bold;
     font-style: normal;
 
@@ -44,8 +44,8 @@ button{
 
 @font-face {
     font-family: 'Lato';
-    src: url('fonts/lato-italic-webfont.woff2') format('woff2'),
-         url('fonts/lato-italic-webfont.woff') format('woff');
+    src: url('../fonts/lato-italic-webfont.woff2') format('woff2'),
+         url('../fonts/lato-italic-webfont.woff') format('woff');
     font-weight: normal;
     font-style: italic;
 
@@ -200,7 +200,6 @@ button{
     table-layout: fixed;
     border-spacing: 0px 12px;
     margin: 15px 15px 9.5vh;
-    
 }
 
 .cartitem{

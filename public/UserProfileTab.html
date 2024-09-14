@@ -19,6 +19,7 @@
                     <td style = "width: 5%"></td>
                     <td style = "width: 45%"><p style = "font-weight: bold !important; text-align: left !important">Profile</p></td>
                     <td style = "width: 38%"></td>
+                    
                     <td style = "width: 8%" class = "menuicon" onclick="toggleMenu();" id = "hamburger">&#8801;</td>
                     <td style = "width: 4%"></td>
                 </tr>
@@ -67,7 +68,7 @@
                     </tr>
                     <tr>
                         <td style = "width: 25%">
-                            <label for="preferencesInput"><span>Preferences</span></label>    
+                            <label for="interestsInput"><span>Preferences</span></label>    
                         </td>
                         <td style = "width: 75%">
                             <input type="text" placeholder="Enter Interests" name="interestsInput" value="" id="interestsInput" onclick = ""/>
@@ -75,10 +76,11 @@
                     </tr>
                     <tr>
                         <td style = "width: 25%">
-                            <label for="skillInput"><span>Skill</span></label>
+                            <label for="ageRangeMinInput"><span>Preferend Age Range</span></label>
                         </td>
                         <td style = "width: 75%">
-                            <input type="text" placeholder="Enter Skill Level" name="skillInput" value="" id="skillInput" onclick = ""/>
+                            <input type="number" min="18" max="122" id="ageRangeMinInput" onclick = ""/>
+                            <input type="number" min="18" max="122" id="ageRangeMaxInput" onclick = ""/>
                         </td>
                     </tr>
                     <tr>
