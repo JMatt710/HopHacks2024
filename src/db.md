@@ -8,5 +8,6 @@
     first_name: str, // required input
     last_name: str, // required input
     username: str, // required input
-    friends: [str] // []
+    friends: [str], // []
+    rejected_friends: []
 }

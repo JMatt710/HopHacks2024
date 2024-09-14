@@ -30,7 +30,8 @@ class User {
                 "first_name": first_name,
                 "last_name": last_name,
                 "username": username,
-                "friends": []
+                "friends": [],
+                "rejected_friends": []
             }
 
             try {
@@ -275,6 +276,63 @@ class User {
             return false
         }
     }
+
+    /*
+        Use findOne and filter by username. Append friend
+        to rejected_friends array. Commit changes to Mongo. Return
+        true/false based on success.
+    */
+        async addRejectedFriend(username, friend_username) {
+            try {
+                 // Add the interest to the interests array
+                const result = await this.users.updateOne(
+                    { username: username }, // Filter by username
+                    { $addToSet: { rejected_friends: friend_username } } // Add interest to the interests array (avoids duplicates)
+                );
+    
+                // Check if the update was successful
+                if (result.modifiedCount > 0) {
+                    console.log('Friend rejected successfully.');
+                    return true;
+                } else {
+                    console.log('Failed to reject friend.');
+                    return false;
+                }
+    
+            } catch(error) {
+                console.error('Error updating rejected friends:', error);
+                return false
+            }
+        }
+    
+        /*
+            Use findOne and filter by username. Loop through
+            rejected_friends, and delete friend when found (then break).
+            Commit changes to Mongo. Return true/false based
+            on success.
+        */
+        async removeFriend(username, friend_username) {
+            try {
+                 // Remove the interest to the interests array
+                const result = await this.users.updateOne(
+                    { username: username }, // Filter by username
+                    { $pull: { rejected_friends: friend_username } } // Remove interest
+                );
+    
+                // Check if the update was successful
+                if (result.modifiedCount > 0) {
+                    console.log('Friend deleted from rejects successfully.');
+                    return true;
+                } else {
+                    console.log('Failed to delete friend from rejects.');
+                    return false;
+                }
+    
+            } catch(error) {
+                console.error('Error unrejecting friends:', error);
+                return false
+            }
+        }
 
     /* 
         Given a user, returns an array of usernames that have search
