@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>User profile</title>
+        <link rel="stylesheet" href="style.css" />
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <!--<style>
+            @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+        </style>-->
+        <script type="text/javascript" src="menu.js"></script>
+        <script src="Functionality.js"></script>
+    </head>
+
+    <body onload="fill_info()" ontouchstart = "">
+        <div class = "navbar upper">
+            <table class = "navcont" style = "font-size: 1.9rem">
+                <tr style = "width: 100vw;">
+                    <td style = "width: 5%"></td>
+                    <td style = "width: 45%"><p style = "font-weight: bold !important; text-align: left !important">Profile</p></td>
+                    <td style = "width: 38%"></td>
+                    <td style = "width: 8%" class = "menuicon" onclick="toggleMenu();" id = "hamburger">&#8801;</td>
+                    <td style = "width: 4%"></td>
+                </tr>
+            </table>
+        </div>
+        <div style = "height: 9.5vh">
+            <!-- padding space -->
+        </div>
+        <div class="menu hide" id="menu" style = "height: 30% !important">
+            <table style="width: 100% !important;">
+                <tr>
+                    <td>
+                        <br/><br/><br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <ul style = "padding-left: 5%">
+                            <li class="menuitem" onclick="toggleProfileForm(); fill_info(); toggleMenu();">Edit Profile</li>
+                            <li class="menuitem" onclick="close_window(); toggleMenu()" style = "color: #d34233">Logout</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="form-popup-profile" id="myFormProfile">
+            <form class="form-container">
+                <h2 style="padding: 2%; text-align: center">Edit Your Profile Information</h2>
+                <table>
+                    <tr>
+                        <td style = "width: 25%">
+                            <label for="nameInput"><span>Name</span></label>
+                        </td>
+                        <td style = "width: 75%">
+                            <input type="text" placeholder="Enter Your Name" name="nameInput" id="nameInput" value="" onclick = "" required/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style = "width: 25%">
+                            <label for="allergensInput"><span>Allergens</span></label>
+                        </td>
+                        <td style = "width: 75%">
+                            <input type="text" placeholder="Enter Allergy Info" name="allergensInput" value="" id="allergensInput" onclick = ""/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style = "width: 25%">
+                            <label for="preferencesInput"><span>Preferences</span></label>    
+                        </td>
+                        <td style = "width: 75%">
+                            <input type="text" placeholder="Enter Preferences" name="preferencesInput" value="" id="preferencesInput" onclick = ""/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style = "width: 25%">
+                            <label for="skillInput"><span>Skill</span></label>
+                        </td>
+                        <td style = "width: 75%">
+                            <input type="text" placeholder="Enter Skill Level" name="skillInput" value="" id="skillInput" onclick = ""/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style = "width: 25%">
+                            <label for="notesInput"><span>Notes</span></label>
+                        </td>
+                        <td style = "width: 75%">
+                            <input type="text" placeholder="Enter Some Notes" name="notesInput" value="" id="notesInput" onclick = ""/>
+                        </td>
+                    </tr>
+                </table>
+                <br/>
+                <button type="button" class="btn" onclick="update_profile_info(); toggleProfileForm(); hideOSKeyboard();">Enter</button>
+                <button type="button" class="btn cancel" onclick="fill_info(); toggleProfileForm(); hideOSKeyboard();">Close</button>     
+            </form>
+        </div>
+        <!-- PUT PAGE CONTENT HERE -->
+
+
+    <div class="profile-item-grid">
+        <div class="profile-item-grid-item" style="text-align: center;">
+            <img src="pfp.png" alt="" style="width:256px;height: 256px;">
+
+            <div style="font-size: 1.8rem;" id="name">Hello!<br/>Please update your information by selecting <span style = "font-weight: bold">Edit Profile </span>in the menu.<br/><br/></div>
+        </div>
+        <div class="profile-item-grid-item">
+            Allergens
+            <p id="allergens" class="profile-text-content"><span style = "font-style: italic">none</span></p>
+        </div>
+        <div class="profile-item-grid-item">
+            Preferences
+            <p id="preferences" class="profile-text-content"><span style = "font-style: italic">none</span></p>
+
+        </div>
+        <div class="profile-item-grid-item">
+            Skill Level
+            <p id="skill" class="profile-text-content"><span style = "font-style: italic">none</span></p>
+
+        </div>
+        <div class="profile-item-grid-item">
+            Notes
+            <p id="notes" class="profile-text-content"><span style = "font-style: italic">none</span></p>
+
+        </div>
+        <div class="profile-item-grid-item">
+            <br/>
+        </div>
+    </div>
+
+    <div class = "navbar lower">
+            <table class = "navcont">
+                <tr style = "width: 100vw;">
+                    <td style = "width: 5%"></td>
+                    <td class = "navitem" onclick = "location.href='index.html'"><p>Map</p></td>
+                    <td class = "navitem" onclick = "location.href='FriendsTab.html'"><p>Friends</p></td>
+                    <td class = "navitem" onclick = "location.href='MessagingTab.html'"><p>Messaging</p></td>
+                    <td class = "navitem selected"><p>Profile</p></td>
+                    <td style = "width: 5%"></td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

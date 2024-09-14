@@ -1,0 +1,611 @@
+body{
+    background: #eceff1 linear-gradient(to bottom right, #f6f6f6, #eceff1) no-repeat fixed !important;
+    color: #000000;
+    font-family: 'Lato', Helvetica, sans-serif;
+}
+
+h1{
+    text-align: center;
+    font-size: 45px;
+}
+
+h3{
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+button{
+    font-family: 'Lato', Helvetica, sans-serif;
+}
+
+/* CUSTOM FONT CLASSES */
+
+@font-face {
+    font-family: 'Lato';
+    src: url('fonts/lato-regular-webfont.woff2') format('woff2'),
+         url('fonts/lato-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url('fonts/lato-bold-webfont.woff2') format('woff2'),
+         url('fonts/lato-bold-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url('fonts/lato-italic-webfont.woff2') format('woff2'),
+         url('fonts/lato-italic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+
+}
+
+/* BEGIN ANDREW'S CLASSES */
+
+.navbar{
+    width: 100vw;
+    height: 9.5vh; 
+    min-height: 70px; 
+    position: fixed; 
+    left: 0px;
+    box-shadow: 0px 1px 6px 4px rgba(36,42,45, 0.3);
+    transition: background 0.25s ease;
+    cursor: default !important;
+    user-select: none;
+    z-index: 100;
+}
+
+.lower{
+    background: #ffffff;
+    bottom: 0px;
+}
+
+.upper{
+    background: rgba(255,255,255,0.9); 
+    top: 0px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.navcont{
+    border: none; 
+    border-collapse: collapse; 
+    height: 100%; 
+    width: 100vw;
+}
+
+.navitem{
+    width: 22.5%; 
+    text-align: center;
+    border-bottom: 3px solid #ffffff;
+}
+
+.navitem p{
+    color: #2e8cca;
+    line-height: normal;
+    transition: color 0.25s ease;
+    font-size: 1.6rem; 
+    text-decoration: none;
+    cursor: default;
+}
+
+.navitem p:active{
+    color: #3498db !important;
+    transition: color 0.25s ease;
+}   
+
+.selected{
+    background-color: #ecf0f1 !important;
+    border-bottom: 3px solid #1f628e !important;
+}
+
+.selected p{
+    color: #1f628e !important;
+    font-weight: bold !important;
+}
+
+.oskeyboard{
+    width: 100vw;
+    left: 0px;
+    height: 36vh;
+    position: fixed;
+    bottom: -50%;
+    opacity: 0%;
+    z-index: 101;
+    text-align: center;
+    background: #f6f6f6 url("pretend.png") no-repeat center;
+    transition: bottom 0.5s ease, opacity 0.5s ease;
+}
+
+.oskshow{
+    bottom: 0px;
+    opacity: 100%;
+    transition: bottom 0.5s ease, opacity 0.5s ease;
+}
+
+.menu {
+    width: 100% !important;
+    height: 19%;
+    position: fixed;
+    top: 0;
+    color: #212529 !important;
+    background: #ffffff !important;
+    z-index: 10;
+    user-select: none;
+    transition: all 0.5s ease;
+    box-shadow: 0px 1px 6px 4px rgba(36,42,45, 0.3);
+}
+
+.hide {
+    opacity: 0%;
+    left: 100% !important;
+}
+
+.show {
+    opacity: 100%;
+    left: 0%;
+}
+
+.menuitem {
+    font-size: 1.6rem;
+    font-weight: normal;
+    color: #242a2d;
+    text-decoration: none !important;
+    text-align: left;
+    background: inherit;
+    list-style: none;
+    border-bottom: 3px solid #ffffff !important;
+    border-top: 3px solid #ffffff !important;
+    width: 100%;
+    border: none;
+    padding: 10px 0px;
+    transition: all 0.25s ease;
+    cursor: default !important;
+}
+
+.menuitem:active {
+    color: #000000;
+    background: #f6f6f6;
+    border-bottom: 3px solid #3498db !important;
+    border-top: 3px solid #f6f6f6 !important;
+    transition: all 0.25s ease;
+}
+
+.menuicon{
+    font-weight: bold !important;
+    text-align: center;
+    color: inherit;
+    transition: color 0.5s ease;
+}
+
+.toggled{
+    color: #1f628e !important;
+    transition: color 0.5s ease;
+}
+
+.carttable{
+    width: calc(100% - 30px);
+    border: none;
+    table-layout: fixed;
+    border-spacing: 0px 12px;
+    margin: 15px 15px 9.5vh;
+    
+}
+
+.cartitem{
+    box-shadow: 0px 1px 6px 4px rgba(36,42,45, 0.3);
+    transform: scale(1,1);
+    cursor: default;
+}
+
+.cartitem td{
+    margin: 10px;
+    background-color: rgba(255,255,255, 0.8);
+    padding: 3px 12px;
+    border-bottom: 5px solid #1f628e;
+    transition: border-bottom 0.25s ease, background-color 0.25s ease;
+    user-select: none;
+}
+
+.cartitem:active td{
+    background-color: #ffffff;
+    border-bottom: 5px solid #3498db;
+    transition: border-bottom 0.25s ease, background-color 0.25s ease;
+}
+
+.cartitem td p{
+    font-size: 1.25rem;
+}
+
+.expand{
+    transition: transform 0.25s ease !important;
+}
+
+.collapse{
+    transform: rotate(180deg) translateY(-8px);
+}
+
+.profileinput {
+  width: 35%;
+  padding: 8px 8px 8px;
+  font-size: 16px;
+  border: 1px solid #242a2d;
+  background-color: #ffffff;
+}
+
+.profileinput:focus {
+  padding: 8px 8px 7px;
+  border-bottom: 2px solid #2e8cca;
+  outline: none;
+}
+
+
+/* END ANDREW'S CLASSES */
+
+/* BEGIN KARTHIK'S CLASSES */
+
+.profile-item-grid{
+    display: grid;
+    grid-template-rows: auto;
+    grid-row-gap: 1px;
+    background: transparent;
+    width: 90vw;
+    margin: auto auto 9.5vh;
+}
+
+.profile-item-grid-item{
+    text-align: left;
+    padding: 10px;
+    font-size: 1.8rem;
+}
+
+.profile-logout-button{
+    background-color: #d34233;
+    border: none;
+    color: white;
+    padding: 12px 36px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.8rem;
+    margin: 4px 2px;
+    border-radius: 5px;
+    transition: background-color 0.25s ease;
+}
+
+.profile-logout-button:active{
+    background-color: #e74c3c;
+    transition: background-color 0.25s ease;
+}
+
+.profile-updateinfo-button{
+    background-color: #16a085;
+    border: none;
+    color: white;
+    padding: 6px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    border-radius: 5px;
+    transition: background-color 0.25s ease;
+}
+
+.profile-updateinfo-button:active{
+    background-color: #18ae90;
+    transition: background-color 0.25s ease;
+}
+
+.profile-text-content{
+    text-align: left;
+    padding: 1px;
+    font-size: 20px;
+}
+
+.form-popup-profile {
+    position: fixed;
+    left: 0%;
+    bottom: 100%;
+    padding-left: 9%;
+    padding-right: 9%;
+    padding-top: 13vh;
+    padding-bottom: 19vh;
+    z-index: 5;
+    opacity: 0%;
+    background-color: rgba(36,42,45, 0.25);
+    transition: bottom 0.5s ease, opacity 0.5s ease;
+  }
+
+/* END KARTHIK'S CLASSES */
+
+/* BEGIN SHAWDI'S CLASSES */
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #d34233;
+    cursor: default;
+}
+
+.overlay {
+    display: block;
+    position: fixed;
+    top: -1%;
+    left: 0px;
+    width: 100%;
+    height: 0%;
+    background-color: rgba(36,42,45, 0.25); 
+    z-index: 1;
+    transition: height 0.5s ease, top 0.5s ease;
+}
+
+.oshow{
+    height: 100%;
+    top: 0%;
+    transition: height 0.5s ease, top 0.5s ease;
+}
+
+.popup {
+    position: fixed;
+    top: -35%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    opacity: 0%;
+    background-color: #ffffff;
+    padding: 25px;
+    box-shadow: 0px 1px 6px 4px rgba(36,42,45, 0.3);
+    z-index: 2;
+    transition: top 0.5s ease, opacity 0.5s ease;
+}
+
+.pshow{
+    opacity: 100%;
+    top: 50%;
+    transition: top 0.5s ease, opacity 0.5s ease;
+} 
+
+.scrollable-area {
+    overflow:scroll;
+    border: 1px solid #242a2d;
+    padding: 5px;
+    margin: 2px auto 5px;
+    background: rgba(255,255,255,0.9);
+    font-size: 16px;
+}
+
+
+/* END SHAWDI'S CLASSES */
+
+/* BEGIN ISABELLA'S CLASSES */
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+    background-color: #455a64;
+    color: #ffffff;
+    padding: 20px 20px;
+    border: none;
+    cursor: default;
+    position: fixed;
+    width: 90px;
+    height: 90px;
+    border-radius: 45px;
+    z-index: 2;
+    font-size: 2.75rem;
+    transition: background-color 0.25s ease;
+}
+
+.open-button p {
+    transform: translate(1px, -48px);
+}
+
+.open-button:active {
+    background-color: #607d8b;
+    transition: background-color 0.25s ease;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  position: fixed;
+  left: 0%;
+  bottom: 100%;
+  padding-left: 9%;
+  padding-right: 9%;
+  padding-top: 12vh;
+  padding-bottom: 25.5vh;
+  z-index: 5;
+  opacity: 0%;
+  background-color: rgba(36,42,45, 0.25);
+  transition: bottom 0.5s ease, opacity 0.5s ease;
+}
+
+.fpshow {
+  bottom: 9.5vh;
+  opacity: 100%;
+  transition: bottom 0.5s ease, opacity 0.5s ease;
+}
+
+/*form pop up for Messaging list items*/
+.form-popup-Messaging {
+    position: fixed;
+    left: 0%;
+    bottom: 100%;
+    padding-left: 9%;
+    padding-right: 9%;
+    padding-top: 15vh;
+    padding-bottom: 31vh;
+    z-index: 5;
+    opacity: 0%;
+    background-color: rgba(36,42,45, 0.25);
+    transition: bottom 0.5s ease, opacity 0.5s ease;
+  }
+  
+.fpsshow {
+    bottom: 9.5vh;
+    opacity: 100%;
+    transition: bottom 0.5s ease, opacity 0.5s ease;
+}
+
+/* Add styles to the form container */
+.form-container {
+  width: 75vw;
+  padding-left: 3.5vw;
+  padding-right: 3.5vw;
+  background-color: rgba(255,255,255,0.95);
+  border: 2px solid #242a2d;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.form-container span{
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=number], .form-container input[type=password] {
+  width: 100%;
+  padding: 12px 12px 12px;
+  font-size: 16px;
+  margin: 8px 0px 8px 0px;
+  border: 1px solid #242a2d;
+  background-color: #f6f6f6;
+  transition: background-color 0.25s ease;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=number]:focus, .form-container input[type=password]:focus {
+  background-color: #ecf0f1;
+  padding: 12px 12px 11px;
+  border-bottom: 2px solid #2e8cca;
+  outline: none;
+  transition: background-color 0.25s ease;
+}
+
+.form-container table{
+    border: none; 
+    border-collapse: collapse; 
+    padding: 0px; 
+    margin: 0px; 
+    background: transparent; 
+    width: calc(100% - 24px);
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #16a085;
+  color: white;
+  padding: 17px 20px;
+  font-size: 1.25rem;
+  border: none;
+  cursor: default;
+  width: 100%;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  transition: background-color 0.25s ease;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:active {
+  background-color: #18ae90;
+  transition: background-color 0.25s ease;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: #d34233;
+  font-size: 1.25rem;
+  border-radius: 5px;
+}
+
+.form-container .cancel:active {
+  background-color: #e74c3c;
+}
+
+.foodBox {
+  text-align: center;
+  padding: 5px;
+  font-size: 30px;
+  border: 2px solid #1f628e; 
+  background-color: rgba(255,255,255,0.9);
+  height: 148px; 
+  width: 182px; 
+  word-wrap: break-word;
+  cursor: default;
+  transition: border-color 0.25s ease;
+}
+
+.foodBox:active {
+  border-color: #3498db;
+  transition: border-color 0.25s ease;
+}
+
+.foodTable {
+  border-spacing:14px; 
+  font-size: 40px;
+  width: calc(90vw + 28px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.remove-food-button {
+  background-color: #d34233;
+  color: #ffffff;
+  padding: 18px 20px;
+  border: none;
+  cursor: default;
+  width: 200px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.foodImage {
+    border-radius: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.categoryTitle {
+    text-align: center;
+    padding-top: 5px;
+    font-size: 2.25rem;
+    cursor: default;
+}
+
+.edit-food-button {
+    background-color: #16a085;
+    color: #ffffff;
+    padding: 18px 20px;
+    border: none;
+    cursor: default;
+    width: 200px;
+    border-radius: 5px;
+    font-size: 16px
+  }
+  
+  
+  /* Add some hover effects to buttons */
+  .edit-food-button .btn:active {
+    background-color: #18ae90;
+    transition: background-color 0.25s ease;
+  }
+
+  .Map-instructions {
+    text-align: center;
+    padding: 5px;
+    font-size: 1.6rem;
+    cursor: default;
+  }
+
+/* END ISABELLA'S CLASSES */

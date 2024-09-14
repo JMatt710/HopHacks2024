@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Messaging</title>
+        <link rel="stylesheet" href="style.css" />
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <!--<style>
+            @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+        </style>-->
+        <script type="text/javascript" src="menu.js"></script>
+        <script src="Functionality.js"></script>
+    </head>
+
+    <body onload = "" ontouchstart = "">
+        <div class = "navbar upper">
+            <table class = "navcont" style = "font-size: 1.9rem">
+                <tr style = "width: 100vw;">
+                    <td style = "width: 5%"></td>
+                    <td style = "width: 45%"><p style = "font-weight: bold !important; text-align: left !important">Messaging</p></td>
+                    <td style = "width: 30%"></td>
+                    <td style = "width: 8%" class = "menuicon" onclick="toggleMessagingForm();" id = "plus">+</td>
+                    <td style = "width: 8%" class = "menuicon" onclick="toggleMenu();" id = "hamburger">&#8801;</td>
+                    <td style = "width: 4%"></td>
+                </tr>
+            </table>
+        </div>
+        <div style = "height: 9.5vh">
+            <!-- padding space -->
+        </div>
+        <div class="menu hide" id="menu">
+            <table style="width: 100% !important;">
+                <tr>
+                    <td>
+                        <br/><br/><br/><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <ul style = "padding-left: 5%">
+                            <li class="menuitem" onclick="location.href='#putsomethinghere'">Search</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!-- PUT PAGE CONTENT HERE -->
+        <div style = "width: 100%">
+            <div id="resultMessaging"></div>
+        </div>
+                  
+         <div class = "navbar lower">
+            <table class = "navcont">
+                <tr style = "width: 100vw;">
+                    <td style = "width: 5%"></td>
+                    <td class = "navitem" onclick = "location.href='index.html'"><p>Map</p></td>
+                    <td class = "navitem" onclick = "location.href='FriendsTab.html'"><p>Friends</p></td>
+                    <td class = "navitem selected"><p>Messaging</p></td>
+                    <td class = "navitem" onclick = "location.href='UserProfileTab.html'"><p>Profile</p></td>
+                    <td style = "width: 5%"></td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>
+
