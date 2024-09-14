@@ -1,4 +1,3 @@
-// import { Database } from './db.js';
 const Database = require('./db')
 
 const db = new Database("meetcute", "meetcute");
