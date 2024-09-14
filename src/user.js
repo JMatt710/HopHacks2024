@@ -2,6 +2,8 @@ class User {
 
     constructor(db) {
         this.users = db.collection('users');
+        this.users.createIndex({ username: 1 });
+        this.users.createIndex({ location: "2dsphere"})
     }
 
     async checkUsernameExists(username) {
@@ -19,10 +21,11 @@ class User {
 
         if(!checkUsernameExists(username)) {
             const user = {
-                "location": [],
+                "location": NaN,
                 "interests": [],
                 "age": age,
                 "age_range": [18, 125],
+                "dist_range": 2,
                 "location_enabled": false,
                 "first_name": first_name,
                 "last_name": last_name,
@@ -87,17 +90,13 @@ class User {
     */
     async updateLocation(username, latitude, longitude) {
         try {
-            // Find the user using getUserByUsername
-            const user = await this.getUserByUsername(username);
-            if (!user) {
-                console.log('User not found.');
-                return false; // Return false if user doesn't exist
-            }
-
             // Update the user's location
             const result = await this.users.updateOne(
                 { username: username }, // Filter by username
-                { $set: { location: [latitude, longitude] } } // Update lat/long
+                { $set: { location: {
+                    "type": "Point",
+                    "coordinates": [longitude, latitude]
+                } } } // Update lat/long
             );
 
             // Check if the update was successful
@@ -121,13 +120,6 @@ class User {
     */
     async updateAgeRange(username, low, high) {
         try {
-            // Find the user using getUserByUsername
-            const user = await this.getUserByUsername(username);
-            if (!user) {
-                console.log('User not found.');
-                return false; // Return false if user doesn't exist
-            }
-
             // Update the user's age range
             const result = await this.users.updateOne(
                 { username: username }, // Filter by username
@@ -148,6 +140,28 @@ class User {
         }
     }
 
+    async updateDistRange(username, range) {
+        try {
+            // Update the user's distance range
+            const result = await this.users.updateOne(
+                { username: username }, // Filter by username
+                { $set: { dist_range: range } } // Update distance range
+            );
+
+            // Check if the update was successful
+            if (result.modifiedCount > 0) {
+                console.log('Distance range updated successfully.');
+                return true;
+            } else {
+                console.log('Failed to update distance range.');
+                return false;
+            }
+        } catch (error) {
+            console.error('Error updating distance range:', error);
+            return false;
+        }
+    }
+
     /*
         Use findOne and filter by username. Append interest
         to interests array. Commit changes to Mongo. Return
@@ -155,13 +169,6 @@ class User {
     */
     async addInterest(username, interest) {
         try {
-            // Find the user using getUserByUsername
-            const user = await this.getUserByUsername(username);
-            if (!user) {
-                console.log('User not found.');
-                return false; // Return false if user doesn't exist
-            }
-
              // Add the interest to the interests array
             const result = await this.users.updateOne(
                 { username: username }, // Filter by username
@@ -191,13 +198,6 @@ class User {
     */
     async removeInterest(username, interest) {
         try {
-            // Find the user using getUserByUsername
-            const user = await this.getUserByUsername(username);
-            if (!user) {
-                console.log('User not found.');
-                return false; // Return false if user doesn't exist
-            }
-
              // Remove the interest to the interests array
             const result = await this.users.updateOne(
                 { username: username }, // Filter by username
@@ -226,13 +226,6 @@ class User {
     */
     async addFriend(username, friend_username) {
         try {
-            // Find the user using getUserByUsername
-            const user = await this.getUserByUsername(username);
-            if (!user) {
-                console.log('User not found.');
-                return false; // Return false if user doesn't exist
-            }
-
              // Add the interest to the interests array
             const result = await this.users.updateOne(
                 { username: username }, // Filter by username
@@ -262,13 +255,6 @@ class User {
     */
     async removeFriend(username, friend_username) {
         try {
-            // Find the user using getUserByUsername
-            const user = await this.getUserByUsername(username);
-            if (!user) {
-                console.log('User not found.');
-                return false; // Return false if user doesn't exist
-            }
-
              // Remove the interest to the interests array
             const result = await this.users.updateOne(
                 { username: username }, // Filter by username
@@ -288,5 +274,36 @@ class User {
             console.error('Error deleting friends:', error);
             return false
         }
+    }
+
+    /* 
+        Given a user, returns an array of usernames that have search
+        radius' that overlap.
+    */
+    async findUsersInRange(username) {
+        const currentUser = this.getUserByUsername(username);
+        const currentUserLocation = currentUser.location;
+        const currentUserRange = currentUser.dist_range * 1609.34 // Miles to Meters Conversion
+
+        const results = await this.users.aggregate([
+            {
+                $geoNear: {
+                    near: {
+                        type: "Point",
+                        coordinates: currentUserLocation.coordinates
+                    },
+                    distanceField: "distance", // Store distance in meters
+                    maxDistance: currentUserRange, // Max distance in meters
+                    spherical: true // Use 2dsphere calculations
+                }
+            },
+            {
+                $match: {
+                    range: { $gte: currentUser.distance / 1609.34 } // Convert the distance back to miles for comparison
+                }
+            }
+        ]).toArray();
+
+        return results;
     }
 }
