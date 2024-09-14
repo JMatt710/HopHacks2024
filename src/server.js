@@ -1,3 +1,9 @@
+// import { Database } from './db.js';
+const Database = require('./db')
+
+const db = new Database("meetcute", "meetcute");
+db.test();
+
 const express = require('express');
 const path = require('path');
 
