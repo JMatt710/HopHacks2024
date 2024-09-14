@@ -94,6 +94,7 @@ button{
 textarea {
     width: 100%;
     height: 50%; /* Adjust as needed */
+    resize: none;
 }
 
 .navcont{
