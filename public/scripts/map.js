@@ -3,7 +3,7 @@ class MapController {
     this.map = L.map('map');
     this.initMap();
     this.initial = 1; // Is 1 when first starting up the the website then 0
-    this.startInterval(); // Start the 3-minute interval
+    //this.startInterval(); // Start the 3-minute interval
   }
 
   /**
