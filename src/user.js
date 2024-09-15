@@ -24,7 +24,7 @@ class User {
         }
     }
 
-    async createUser(age, first_name, last_name, username) {
+    async createUser(age, first_name, last_name, username, password) {
         const usernameExists = await this.checkUsernameExists(username);
         if(!usernameExists) {
             const user = {
@@ -41,7 +41,8 @@ class User {
                 "last_name": last_name,
                 "username": username,
                 "friends": [],
-                "rejected_friends": []
+                "rejected_friends": [],
+                "password": password
             }
 
             try {
@@ -354,31 +355,38 @@ class User {
         radius' that overlap.
     */
     async findUsersInRange(username) {
-        /*const currentUser = await this.getUserByUsername(username);
-        const currentUserLocation = currentUser.location;
-        const currentUserRange = currentUser.dist_range * 1609.34 // Miles to Meters Conversion
+        const user = await this.getUserByUsername(username);
+        const userLocation = user.location.coordinates;
+        const userDistRange = user.dist_range;
 
-        const results = await this.users.aggregate([
-            {
-                $geoNear: {
-                    near: {
-                        type: "Point",
-                        coordinates: currentUserLocation.coordinates
-                    },
-                    distanceField: "distance", // Store distance in meters
-                    maxDistance: currentUserRange, // Max distance in meters
-                    spherical: true // Use 2dsphere calculations
+        // Step 2: Find users within the user's distance range using $geoWithin
+        const nearbyUsers = await this.users.find({
+            username: { $ne: username }, // Exclude the original user
+            location: {
+                $geoWithin: {
+                    $centerSphere: [userLocation, userDistRange / 3963.2] // Convert distance to radians
                 }
             },
-            {
-                $match: {
-                    range: { $gte: currentUser.distance / 1609.34 } // Convert the distance back to miles for comparison
-                }
+            $expr: {
+                // Calculate the Euclidean distance between the user's coordinates and each user's location
+                $lte: [
+                    {
+                        $sqrt: {
+                            $add: [
+                                { $pow: [{ $subtract: [{ $arrayElemAt: ["$location.coordinates", 0] }, userLocation[0]] }, 2] },
+                                { $pow: [{ $subtract: [{ $arrayElemAt: ["$location.coordinates", 1] }, userLocation[1]] }, 2] }
+                            ]
+                        }
+                    },
+                    { $add: [userDistRange, "$dist_range"] }
+                ]
             }
-        ]).toArray();*/
-        const results = ["Justin", "Isabella", "Ryan", "Nithin"]
+        }).toArray();
 
-        return results;
+        return nearbyUsers.map(user => user.username);
+    } catch(err) {
+        console.err('Err finding nearby users:', err);
+        return [];
     }
 }
 

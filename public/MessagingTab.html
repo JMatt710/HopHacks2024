@@ -35,7 +35,7 @@
                             e.preventDefault(); // Prevent the default behavior
                         } else {
                             // Send the message when only Enter is pressed
-                            alert(editor.getContent());
+                            addMessageBubble(editor.getContent());
                             editor.resetContent();
                             e.preventDefault(); // Prevent default behavior
                         }
@@ -53,7 +53,25 @@
                     },
                 });
             }
+
         });
+        function addMessageBubble(content) {
+            // Get the message history container
+            const messageHistory = document.getElementById('messageHistory');
+
+            // Create a new message bubble div
+            const messageBubble = document.createElement('div');
+            messageBubble.classList.add('message-bubble');
+
+            // Set the content of the bubble
+            messageBubble.innerHTML = content;
+
+            // Append the message bubble to the history
+            messageHistory.appendChild(messageBubble);
+
+            // Optionally scroll to the bottom of the message history
+            messageHistory.scrollTop = messageHistory.scrollHeight;
+        }
     </script>
 </head>
 
@@ -72,14 +90,18 @@
         </table>
     </div>
     <div style="height: 9.5vh"></div> <!-- padding space -->
-
+    <div id="messageHistory" class="message-history"></div>
     <!-- Textarea for TinyMCE -->
     <div class="textarea-container">
         <form>
             <textarea id="mytextarea"></textarea>
         </form>
     </div>
-    
+
+
+
+
+
     <!-- PUT PAGE CONTENT HERE -->
     <div style="width: 100%">
         <div id="resultMessaging"></div>
