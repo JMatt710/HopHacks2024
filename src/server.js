@@ -6,7 +6,11 @@ db.test();
 const express = require('express');
 const path = require('path');
 
+const cookieParser = require('cookie-parser');
+
+
 const app = express();
+app.use(cookieParser());
 const port = process.env.PORT || 3000;
 
 const isAuthenticated = async (req, res, next) => {
@@ -42,6 +46,42 @@ app.get('/profile', isAuthenticated, async(req, res) => {
 app.get('/login', isAuthenticated, async(req, res) => {
   res.sendFile(path.join(__dirname, '../public', 'login.html'));
 })
+app.use(express.json());
+app.post('/api/register', async (req,res) => {
+  console.log(req.body);
+  const {uname, psw, fname, lname, email} = req.body;
+  const user = await db.initUser();
+  const user_id = await user.createUser(24, fname, lname, uname, psw);
+
+  if (user_id) {
+    res.cookie('loggedIn', 'true', { httpOnly: true, maxAge: 3600000 }); // 1 hour expiration
+    res.cookie('username', uname, { httpOnly: true, maxAge: 3600000 });
+    res.json({ success: true });
+  } else {
+    res.status(401).json({ success: false, message: 'Invalid credentials.' });
+  }
+});
+app.post('/api/login', async (req,res) => {
+  console.log(req.body);
+  const {uname, psw} = req.body;
+  const user = await db.initUser();
+  const user_id = await user.getUserByUsername(uname);
+  if(user_id) {
+    if(user_id.username == uname) {
+      res.cookie('loggedIn', 'true', { httpOnly: true, maxAge: 3600000 }); // 1 hour expiration
+      res.cookie('username', uname, { httpOnly: true, maxAge: 3600000 });
+      res.json({ success: true });
+    }
+    else {
+      res.cookie('loggedIn', 'false', { httpOnly: true, maxAge: 3600000 }); // 1 hour expiration
+      // res.cookie('username', uname, { httpOnly: true, maxAge: 3600000 });
+      res.json({ success: false });
+    }
+  }
+  else {
+    res.status(401).json({ success: false, message: 'Invalid credentials.' });
+  }
+});
 
 // Get user by username
 app.get('/api/user/get', async (req, res) => {
