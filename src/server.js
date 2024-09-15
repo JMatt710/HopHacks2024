@@ -1,4 +1,14 @@
 const Database = require('./db')
+const { auth, requiresAuth } = require('express-openid-connect');
+
+const config = {
+  authRequired: true,
+  auth0Logout: true,
+  secret: 'becdf956790ba5fbc3364e84c7c3cc32b133d860f2020baa7a7bcd83d2a6d131',
+  baseURL: 'http://localhost:3000',
+  clientID: 'FQ2yFwIHR2kUZ7OY0llla5Yu8cmDxEGF',
+  issuerBaseURL: 'https://dev-fskafmekjbf3ya6h.us.auth0.com'
+};
 
 const db = new Database("meetcute", "meetcute");
 db.test();
@@ -9,10 +19,57 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
 
+app.use(auth(config));
+
 // Serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, '../public')));
 
+// Function to be triggered after login
+const afterLoginFunction = async(user) => {
+  console.log('User logged in:', user);
+  // Perform additional operations here
+  const user1 = await db.initUser();
+  // const userId = await user1.createUser(age, first_name, last_name, username);
+};
+
+// Middleware to handle successful login
+app.use((req, res, next) => {
+  // Ensure req.oidc is available and isAuthenticated is a function
+  if (req.oidc && req.oidc.isAuthenticated()) {
+    // Use a flag or a temporary variable to handle post-login actions
+    if (!req.hasLoggedIn) {
+      req.hasLoggedIn = true; // Initialize flag
+      afterLoginFunction(req.oidc.user); // Call your function here
+    }
+  } else {
+    // Reset the login flag if the user is not authenticated
+    req.hasLoggedIn = false;
+  }
+  next();
+});
+
 // Define routes if needed
+app.get('/', requiresAuth(), async(req, res) => {
+  res.sendFile(path.join(__dirname, '../public', 'index.html'));
+});
+
+app.get('/friends', requiresAuth(), async(req,res) => {
+  res.sendFile(path.join(__dirname, '../public', 'FriendsTab.html'));
+})
+
+app.get('/messaging', requiresAuth(), async(req,res) => {
+  res.sendFile(path.join(__dirname, '../public', 'MessagingTab.html'));
+})
+
+app.get('/profile', requiresAuth(), async(req, res) => {
+  res.sendFile(path.join(__dirname, '../public', 'UserProfileTab.html'));
+})
+
+app.get('/test', requiresAuth(), (req, res) => {
+  // res.send(req.oidc.user);
+  res.json(req.oidc.user);
+});
+
 // Get user by username
 app.get('/api/user/get', async (req, res) => {
   const { username } = req.query;
