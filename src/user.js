@@ -104,10 +104,15 @@ class User {
             // Update the user's location
             const result = await this.users.updateOne(
                 { username: username }, // Filter by username
-                { $set: { location: {
-                    "type": "Point",
-                    "coordinates": [longitude, latitude]
-                } } } // Update lat/long
+                { 
+                    $set: { 
+                            location: {
+                                "type": "Point",
+                                "coordinates": [longitude, latitude]
+                            },
+                            location_enabled: true
+                        } 
+                } // Update lat/long
             );
 
             // Check if the update was successful
