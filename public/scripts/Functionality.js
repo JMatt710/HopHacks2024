@@ -12,8 +12,44 @@ class User {
         this.bioInput = bioInput;
     }
 }
+async function getUserData(username) {
+    const url = `http://localhost:3000/api/user/get?username=${username}`;
+    console.log(url)
+    fetch(url)
+        .then(response => {
+            return response.json();
+        })
+        .then (data => {
+            console.log(data)
+        });
+}
 
+function getCookie(name) {
+    // Create a regular expression to find the cookie by name
+    const value = `; ${document.cookie}`;
+    console.log(value);
+    const parts = value.split(`; ${name}=`);
+
+    // If the cookie is found, return its value
+    if (parts.length === 2) {
+        return parts.pop().split(';').shift();
+    }
+
+    // If the cookie is not found, return null
+    return null;
+}
 let user1 = new User();
+// (async () => {  
+//     let username = getCookie('username');
+//     let user_data = await getUserData(username);
+//     console.log(user_data);
+//     user1.Name = user_data.first_name + " " + user_data.last_name;
+//     user1.Age = user_data.age;
+//     user1.LocationEnabled = true;
+//     user1.userName = user_data.username;
+//     user1.bioInput = "I want to meet people!";
+// })();
+
 user1.Name = "Isabella";
 user1.Age = 23;
 user1.LocationEnabled = true;
