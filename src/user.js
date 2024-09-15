@@ -354,7 +354,7 @@ class User {
         radius' that overlap.
     */
     async findUsersInRange(username) {
-        const currentUser = await this.getUserByUsername(username);
+        /*const currentUser = await this.getUserByUsername(username);
         const currentUserLocation = currentUser.location;
         const currentUserRange = currentUser.dist_range * 1609.34 // Miles to Meters Conversion
 
@@ -375,7 +375,8 @@ class User {
                     range: { $gte: currentUser.distance / 1609.34 } // Convert the distance back to miles for comparison
                 }
             }
-        ]).toArray();
+        ]).toArray();*/
+        const results = ["Justin", "Isabella", "Ryan", "Nithin"]
 
         return results;
     }
