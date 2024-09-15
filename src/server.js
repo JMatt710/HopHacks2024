@@ -9,26 +9,39 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
 
+const isAuthenticated = async (req, res, next) => {
+  const loggedIn = req.cookies?.loggedIn;
+
+  if(loggedIn) {
+    return next();
+  } else {
+    res.redirect('/login.html');
+  }
+}
+
 // Serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, '../public')));
 
 // Define routes if needed
-app.get('/', async(req, res) => {
-  res.sendFile(path.join(__dirname, '../public', 'index.html'));
+app.get('/', isAuthenticated, async(req, res) => {
+  res.sendFile(path.join(__dirname, '../public', 'main.html'));
 });
 
-app.get('/friends', async(req,res) => {
+app.get('/friends', isAuthenticated, async(req,res) => {
   res.sendFile(path.join(__dirname, '../public', 'FriendsTab.html'));
 })
 
-app.get('/messaging', async(req,res) => {
+app.get('/messaging', isAuthenticated, async(req,res) => {
   res.sendFile(path.join(__dirname, '../public', 'MessagingTab.html'));
 })
 
-app.get('/profile', async(req, res) => {
+app.get('/profile', isAuthenticated, async(req, res) => {
   res.sendFile(path.join(__dirname, '../public', 'UserProfileTab.html'));
 })
 
+app.get('/login', isAuthenticated, async(req, res) => {
+  res.sendFile(path.join(__dirname, '../public', 'login.html'));
+})
 
 // Get user by username
 app.get('/api/user/get', async (req, res) => {
