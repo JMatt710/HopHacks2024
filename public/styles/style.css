@@ -51,8 +51,6 @@ button{
 
 }
 
-/* BEGIN ANDREW'S CLASSES */
-
 .navbar{
     width: 100vw;
     height: 9.5vh; 
@@ -271,7 +269,7 @@ textarea {
 
 /* END ANDREW'S CLASSES */
 
-/* BEGIN KARTHIK'S CLASSES */
+
 
 .profile-item-grid{
     display: grid;
@@ -346,10 +344,6 @@ textarea {
     transition: bottom 0.5s ease, opacity 0.5s ease;
   }
 
-/* END KARTHIK'S CLASSES */
-
-/* BEGIN SHAWDI'S CLASSES */
-
 .close-button {
     position: absolute;
     top: 10px;
@@ -405,11 +399,6 @@ textarea {
     background: rgba(255,255,255,0.9);
     font-size: 16px;
 }
-
-
-/* END SHAWDI'S CLASSES */
-
-/* BEGIN ISABELLA'S CLASSES */
 
 /* Button used to open the contact form - fixed at the bottom of the page */
 .open-button {
@@ -629,5 +618,3 @@ textarea {
     font-size: 1.6rem;
     cursor: default;
   }
-
-/* END ISABELLA'S CLASSES */

@@ -28,119 +28,14 @@
                 </tr>
             </table>
         </div>
-        <!-- <div style = "height: 9.5vh"> -->
-            <!-- padding space -->
-        <!-- </div> -->
-        <div class="menu hide" id="menu">
-            <table style="width: 100% !important;">
-                <tr>
-                    <td>
-                        <br/><br/><br/><br/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <ul style = "padding-left: 5%">
-                            <li class="menuitem" onclick="location.href='#putsomethinghere'">Search</li>
-                        </ul>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <!-- PUT PAGE CONTENT HERE -->
-        <div class="form-popup" id="myForm">
-            <form class="form-container">
-                <h2 style="padding: 2%; text-align: center">Filter Potential Matches</h2>
-                <table>
-                    <tr style="width:400px; padding: 10px">
-                        <td style = "width: 28%">
-                            <label for="foodLabel"><span style="color:red">*</span>Food Label<br><span style="color:red">(required)</span></label>
-                        </td>
-                        <td style = "width: 72%">
-                            <input type="text" placeholder="Enter Food Label" name="foodLabel" id="foodLabel" onclick = "" required/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style = "width: 28%">
-                            <label for="category"><span>Category</span></label>
-                        </td>
-                        <td style = "width: 72%">
-                            <select id="category" name="category" style = "font-size: 16px; padding: 12px;">
-                                <option value="Protein">Protein</option>
-                                <option value="Dairy">Dairy</option>
-                                <option value="Vegetable">Vegetable</option>
-                                <option value="Fruit">Fruit</option>
-                                <option value="Carb">Carb</option>
-                                <option value="Drink">Drink</option>
-                                <option value="Meal">Meal</option>
-                                <option value="Spice">Spice</option>
-                                <option value="Oil">Oil</option>
-                                <option value="Other" selected>Other</option>
-                              </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td >
-                            <label for="quantity"><span>Quantity</span></label>
-                        </td>
-                        <td style="width: 10px">
-                            <input type="number" style="width: 30px" placeholder="Enter Quantity" name="quantity" id="quantity" onclick = ""/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style = "width: 28%">
-                            <label for="expiration"><span>Expiration Date</span></label>    
-                        </td>
-                        <td style = "width: 72%">
-                            <input type="date" placeholder="Enter Expiration Date" name="expiration" id="expiration" onclick = ""/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style = "width: 28%">
-                            <label for="allergens"><span>Allergens</span></label>
-                        </td>
-                        <td style = "width: 72%">
-                            <select id="allergens" name="allergens" style = "font-size: 16px; padding: 12px;">
-                                <option value="Milk">Milk</option>
-                                <option value="Eggs">Eggs</option>
-                                <option value="Fish">Fish</option>
-                                <option value="Crustacean Shellfish">Crustacean Shellfish</option>
-                                <option value="Tree Nuts">Tree Nuts</option>
-                                <option value="Peanuts">Peanuts</option>
-                                <option value="Wheat">Wheat</option>
-                                <option value="Soybeans">Soybeans</option>
-                                <option value="Other">Other</option>
-                                <option value="None" selected>None</option>
-                              </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style = "width: 28%">
-                            <label for="calories"><span>Calories</span></label>
-                        </td>
-                        <td style = "width: 72%">
-                            <input type="number" style="width: 30px" placeholder="Enter Calories" name="calories" id="calories" onclick = ""/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style = "width: 27.5">
-                           <label for="servingSize"><span>Serving Size</span></label> 
-                        </td>
-                        <td style = "width: 72%">
-                            <input type="text" placeholder="Enter Serving Size" name="servingSize" id="servingSize" onclick = ""/>
-                        </td>
-                    </tr>
-                </table>
-                <button type="button" style = "width: 49%" class="btn" onclick="formatToAdd(); hideOSKeyboard();">Enter</button>
-                <button type="button" style = "width: 49%" class="btn cancel" onclick="displayAllFood(); hideOSKeyboard();">Close</button>     
-            </form>
-            <!--<button style="bottom:11%; right:2%" class="open-button" onclick="openForm()"><p>+</p></button>-->
-        </div>
-        <div id="result" style = "user-select: none">
-        </div>
+       
         <div style = "height: 9.5vh">
-            <!-- padding space -->
+            <!-- padding space -->    
         </div>
+        
+        <div id="result" style = "user-select: none"></div>
+        <!-- PUT PAGE CONTENT HERE -->
+
         <div id="map"></div>
         <div class = "navbar lower">
             <table class = "navcont">
