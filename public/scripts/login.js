@@ -19,15 +19,14 @@ document.querySelector('form[action="index.html"]').onsubmit = function(event) {
     var username = document.querySelector('input[name="uname"]').value;
     var password = document.querySelector('input[name="psw"]').value;
     
- //   validCredentials = getUserData(username);
+    validCredentials = getUserData(username);
 
-   // if (validCredentials && 'success' in validCredentials) {
-     //   alert("Invalid Username or Password");
-    //} else {
-        // Redirect to index.html
-        if (username == "isabella" && password == "isabella")
-            window.location.href = "index.html";
-    //}
+   if (validCredentials && 'success' in validCredentials) {
+        alert("Invalid Username or Password");
+    } else {
+        //Redirect to index.html
+        window.location.href = "index.html";
+    }
 };
 
 // Handle Register form submission

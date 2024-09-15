@@ -142,13 +142,6 @@ async function findUsersInRange(username) {
         });
 } 
 
-users_in_area = findUsersInRange("johndoe")
-
-for (let i = 0; i < length(users_in_area); i++){
-    potential_friend = users_in_area[i];
-    /* Add pop up stuff here */
-}
-
 
 // Call the function with sample parameters
 //createUser(25, 'John', 'Doe', 'johndoe');
@@ -162,4 +155,4 @@ for (let i = 0; i < length(users_in_area); i++){
 //rejectFriend("johndoe", "Nithin")
 //removeRejectedFriend("johndoe", "Nithin")
 //findUsersInRange("johndoe")
-getUserData("meetcute")
+//getUserData("meetcute")
