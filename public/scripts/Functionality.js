@@ -37,13 +37,33 @@ user1.LocationArr.push(6548);
 user1.LocationArr.push(1538);
 
 function updateUserInfo(){
-    user1.Name = document.getElementById("nameInput");
-    user1.Age = document.getElementById("ageInput");
-    user1.InterestsArr = document.getElementById("interestsInput");
-    user1.AgeRangeArr[0] = document.getElementById("ageRangeMinInput");
-    user1.AgeRangeArr[1] = document.getElementById("ageRangeMaxInput");
-    user1.LocationEnabled = document.getElementById("locationEnabledInput");
-    user1.bioInput = document.getElementById("bioInput");
+    if(document.getElementById("nameInput").value != ""){user1.Name = document.getElementById("nameInput").value};
+    if(document.getElementById("ageInput").value != ""){user1.Age = document.getElementById("ageInput").value};
+    if(document.getElementById("ageRangeMinInput").value != ""){user1.AgeRangeArr[0] = document.getElementById("ageRangeMinInput").value};
+    if(document.getElementById("ageRangeMaxInput").value != ""){user1.AgeRangeArr[1] = document.getElementById("ageRangeMaxInput").value};
+    if(document.getElementById("bioInput").value != ""){user1.bioInput = document.getElementById("bioInput").value};
+    displayProfile();
+    flushInputsUserInfo()
+}
+
+function flushInputsUserInfo(){
+    /* new function to clear all of the input fields on the form, in order to account for the new implementation of the form*/
+    document.getElementById('nameInput').value = '';
+    document.getElementById('ageInput').value = '';
+    document.getElementById('ageRangeMinInput').value = '';
+    document.getElementById('ageRangeMaxInput').value = '';
+    document.getElementById('bioInput').value = '';
+}
+
+function updateInterests(){
+    user1.InterestsArr.push(document.getElementById("interest").value);
+    displayProfile();
+    flushInputsInterests();
+}
+
+function flushInputsInterests(){
+    /* new function to clear all of the input fields on the form, in order to account for the new implementation of the form*/
+    document.getElementById('interest').value = '';
 }
 
 /*MAP FUNCTIONS START*/
@@ -66,6 +86,36 @@ function toggleForm() { // opens/closes the form to enter food items to your Map
         myForm.className = "form-popup fpshow";
         plus.className = "menuicon toggled";
     } 
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Function to open the form
+    function openForm() {
+        myForm.className = "form-popup fpsshow";
+        console.log("Pop up should appear")
+       // document.getElementById("popupMessage").textContent = "You got a match! :D"; // Update the popup message
+        //document.getElementById("myForm").style.display = "block"; // Show the popup
+    }
+
+    // Function to close the form
+    function closeForm() {
+        document.getElementById("myForm").style.display = "none"; // Hide the popup
+    }
+
+    // Trigger the popup after 15 seconds (15,000 milliseconds)
+    setTimeout(openForm, 15000);
+});
+function closePopUp(){
+    myForm.className = "form-popup";
+}
+function toggleInterestForm(){
+    if (myFormInterest.className === "form-popup-interest fpsshow"){
+        myFormInterest.className = "form-popup-interest";
+        plus.className = "menuicon";
+    } else {
+        myFormInterest.className = "form-popup-interest fpsshow";
+        plus.className = "menuicon toggled";
+    }
 }
 
 function displayAllFriendsListItems(){
@@ -100,37 +150,45 @@ function deleteItem(input, index){
     displayAllFriendsListItems();
 }
 
-// function displayProfile(){
-//    var results = "<p>" + user1.Name + " | "  + user1.Age +"</p>" +
-//    "<div class=\"profile-item-grid\">"
-//         "<div class=\"profile-item-grid-item\" style=\"text-align: center;\">" +
-//             "<img src=\"" + images/pfp.png + "\" alt=\"" style="border-radius: 50%">
-//         </div>
-//         <div class="profile-item-grid-item">
-//             Allergens
-//             <p id="allergens" class="profile-text-content"><span style = "font-style: italic">none</span></p>
-//         </div>
-//         <div class="profile-item-grid-item">
-//             Preferences
-//             <p id="preferences" class="profile-text-content"><span style = "font-style: italic">none</span></p>
+function deleteInterest(input, index){
+    var element = input;
+    element.remove();
+    user1.InterestsArr.splice(index, 1);
+    displayProfile();
+}
 
-//         </div>
-//         <div class="profile-item-grid-item">
-//             Skill Level
-//             <p id="skill" class="profile-text-content"><span style = "font-style: italic">none</span></p>
+function displayProfile(){
+   var results = "<div class=\"profile-item-grid\">" +
+        "<div class=\"profile-item-grid-item\" style=\"text-align: center;\">" +
+            "<img src=\"images/pfp.png\" alt=\" style=\"border-radius: 50%\">" +
+        "</div>" +
+        "<div class=\"profile-item-grid-item\">" +
+            "<span style = \"font-style: italic\">" + user1.Name + " | "  + user1.Age + "</span>" +
+        "</div>" +
+        "<div class=\"profile-item-grid-item\">" +
+            "<span style = \"font-style: italic\">" + user1.bioInput + "</span>" +
+        "</div>" +
+         "<div class=\"profile-item-grid-item\" style=\"padding-top: 25px; font-size: 2rem;\"> Interests </div>" +
+    "</div>" + "<table class = \"carttable\" style=\"margin-bottom: 100px;\">";
+   
+    let num = 0;
+    for(let i in user1.InterestsArr){
+        results = results + 
+        "<tr class = \"cartitem\">" +
+            "<td id = \"foodWidth" + i + "\" + style = \"width: 93%\">";
+            results = results + "<h3 style = \"text-decoration: none\" id = \"itemLabel" + i + "\">" +  user1.InterestsArr[i] + "</h3>" +
+            "</td>" +
+            "<td style = \"width: 7%; text-align: center\" onclick = \"deleteInterest(this.parentElement," + i + ")\">" +
+                "<h3>x</h3>" +
+            "</td>" +
+        "</tr>";
+        
+        num = num + 1;
+    }
+        results = results + "</table>";
 
-//         </div>
-//         <div class="profile-item-grid-item">
-//             Notes
-//             <p id="notes" class="profile-text-content"><span style = "font-style: italic">none</span></p>
-
-//         </div>
-//         <div class="profile-item-grid-item">
-//             <br/>
-//         </div>
-//     </div>"
-//    document.getElementById("resultProfile").innerHTML = results;
-// }
+   document.getElementById("resultProfile").innerHTML = results;
+}
 
 function notYetImplemented(i, j){
     document.getElementById("result").innerHTML = "<h1>Sorry! This Feature is not yet implemented" +

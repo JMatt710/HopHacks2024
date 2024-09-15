@@ -1,3 +1,4 @@
+
 class MapController {
   constructor() {
     this.map = L.map('map');
