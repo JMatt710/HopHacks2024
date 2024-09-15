@@ -159,12 +159,11 @@ function togglePopupDiet() {
 };
 
 
-function toggleProfileForm() { // opens/closes the form to enter food items to your Map page
+function toggleProfileForm() { 
     if (myFormProfile.className === "form-popup-profile fpshow"){
         myFormProfile.className = "form-popup-profile";
     } else {
         myFormProfile.className = "form-popup-profile fpshow";
-        popupNetwork.className = "popup";
     } 
 };
 

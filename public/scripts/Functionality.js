@@ -100,37 +100,38 @@ function deleteItem(input, index){
     displayAllFriendsListItems();
 }
 
-// function displayProfile(){
-//    var results = "<p>" + user1.Name + " | "  + user1.Age +"</p>" +
-//    "<div class=\"profile-item-grid\">"
-//         "<div class=\"profile-item-grid-item\" style=\"text-align: center;\">" +
-//             "<img src=\"" + images/pfp.png + "\" alt=\"" style="border-radius: 50%">
-//         </div>
-//         <div class="profile-item-grid-item">
-//             Allergens
-//             <p id="allergens" class="profile-text-content"><span style = "font-style: italic">none</span></p>
-//         </div>
-//         <div class="profile-item-grid-item">
-//             Preferences
-//             <p id="preferences" class="profile-text-content"><span style = "font-style: italic">none</span></p>
+function displayProfile(){
+   var results = "<div class=\"profile-item-grid\">" +
+        "<div class=\"profile-item-grid-item\" style=\"text-align: center;\">" +
+            "<img src=\"images/pfp.png\" alt=\" style=\"border-radius: 50%\">" +
+        "</div>" +
+        "<div class=\"profile-item-grid-item\">" +
+            "<span style = \"font-style: italic\">" + user1.Name + " | "  + user1.Age + "</span>" +
+        "</div>" +
+        "<div class=\"profile-item-grid-item\">" +
+            "<span style = \"font-style: italic\">" + user1.bioInput + "</span>" +
+        "</div>" +
+         "<div class=\"profile-item-grid-item\" style=\"padding-top: 25px; font-size: 2rem;\"> Interests </div>" +
+    "</div>" + "<table class = \"carttable\" >";
+   
+    let num = 0;
+    for(let i in user1.InterestsArr){
+        results = results + 
+        "<tr class = \"cartitem\">" +
+            "<td id = \"foodWidth" + i + "\" + style = \"width: 93%\">";
+            results = results + "<h3 style = \"text-decoration: none\" id = \"itemLabel" + i + "\">" +  user1.InterestsArr[i] + "</h3>" +
+            "</td>" +
+            "<td style = \"width: 7%; text-align: center\" onclick = \"deleteItem(this.parentElement," + i + ")\">" +
+                "<h3>x</h3>" +
+            "</td>" +
+        "</tr>";
+        
+        num = num + 1;
+    }
+        results = results + "</table>";
 
-//         </div>
-//         <div class="profile-item-grid-item">
-//             Skill Level
-//             <p id="skill" class="profile-text-content"><span style = "font-style: italic">none</span></p>
-
-//         </div>
-//         <div class="profile-item-grid-item">
-//             Notes
-//             <p id="notes" class="profile-text-content"><span style = "font-style: italic">none</span></p>
-
-//         </div>
-//         <div class="profile-item-grid-item">
-//             <br/>
-//         </div>
-//     </div>"
-//    document.getElementById("resultProfile").innerHTML = results;
-// }
+   document.getElementById("resultProfile").innerHTML = results;
+}
 
 function notYetImplemented(i, j){
     document.getElementById("result").innerHTML = "<h1>Sorry! This Feature is not yet implemented" +
