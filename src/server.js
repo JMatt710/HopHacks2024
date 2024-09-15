@@ -27,9 +27,9 @@ app.get('/api/user/get', async (req, res) => {
 
 // Create user
 app.get('/api/user/create', async (req, res) => {
-  const { age, first_name, last_name, username } = req.query;
+  const { age, first_name, last_name, username, password } = req.query;
   const user = await db.initUser();
-  const userId = await user.createUser(age, first_name, last_name, username);
+  const userId = await user.createUser(age, first_name, last_name, username, password);
   if (userId) {
       res.json({ success: true, userId });
   } else {

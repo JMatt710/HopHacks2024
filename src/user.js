@@ -24,7 +24,7 @@ class User {
         }
     }
 
-    async createUser(age, first_name, last_name, username) {
+    async createUser(age, first_name, last_name, username, password) {
         const usernameExists = await this.checkUsernameExists(username);
         if(!usernameExists) {
             const user = {
@@ -41,7 +41,8 @@ class User {
                 "last_name": last_name,
                 "username": username,
                 "friends": [],
-                "rejected_friends": []
+                "rejected_friends": [],
+                "password": password
             }
 
             try {

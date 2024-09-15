@@ -1,5 +1,5 @@
-async function createUser(age, first_name, last_name, username) {
-    const url = `http://localhost:3000/api/user/create?age=${age}&first_name=${first_name}&last_name=${last_name}&username=${username}`;
+async function createUser(age, first_name, last_name, username, password) {
+    const url = `http://localhost:3000/api/user/create?age=${age}&first_name=${first_name}&last_name=${last_name}&username=${username}&password=${password}`;
     console.log(url)
     fetch(url)
         .then(response => {
@@ -144,15 +144,15 @@ async function findUsersInRange(username) {
 
 
 // Call the function with sample parameters
-createUser(25, 'John', 'Doe', 'johndoe');
-updateLocation("johndoe", 38.2, 20.4)
-updateAgeRange("johndoe", 50, 89)
-updateDistRange("johndoe", 500)
+//createUser(25, 'John', 'Doe', 'johndoe');
+//updateLocation("johndoe", 38.2, 20.4)
+//updateAgeRange("johndoe", 50, 89)
+//updateDistRange("johndoe", 500)
 //addInterest("johndoe", "Anime kawaii")
-removeInterest("johndoe", "Anime kawaii")
+//removeInterest("johndoe", "Anime kawaii")
 //addFriend("johndoe", "CringeyNithin")
-removeFriend("johndoe", "CringeyNithin")
+//removeFriend("johndoe", "CringeyNithin")
 //rejectFriend("johndoe", "Nithin")
-removeRejectedFriend("johndoe", "Nithin")
-findUsersInRange("johndoe")
-getUserData("johndoe")
+//removeRejectedFriend("johndoe", "Nithin")
+//findUsersInRange("johndoe")
+getUserData("meetcute")
