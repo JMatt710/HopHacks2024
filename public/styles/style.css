@@ -618,3 +618,32 @@ textarea {
     font-size: 1.6rem;
     cursor: default;
   }
+  .message-history {
+    width: 100%;
+    height: 60vh;
+    overflow-y: auto;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.message-bubble {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 15px;
+    background-color: #e0e0e0;
+    max-width: 70%;
+    word-wrap: break-word;
+    clear: both;
+}
+
+.message-bubble:nth-child(odd) {
+    background-color: #cce7ff; /* Slightly different color for alternating bubbles */
+    float: left;
+}
+
+.message-bubble:nth-child(even) {
+    background-color: #c4f1c4; /* Another color variation */
+    float: right;
+}
