@@ -785,14 +785,15 @@ span.psw {
     max-width: 70%;
     word-wrap: break-word;
     clear: both;
+    float: right;
 }
-
+/*
 .message-bubble:nth-child(odd) {
-    background-color: #cce7ff; /* Slightly different color for alternating bubbles */
+    background-color: #cce7ff; /* Slightly different color for alternating bubbles 
     float: left;
 }
 
 .message-bubble:nth-child(even) {
-    background-color: #c4f1c4; /* Another color variation */
+    background-color: #c4f1c4; /* Another color variation 
     float: right;
-}
+}*/
