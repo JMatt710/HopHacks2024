@@ -142,17 +142,24 @@ async function findUsersInRange(username) {
         });
 } 
 
+users_in_area = findUsersInRange("johndoe")
+
+for (let i = 0; i < length(users_in_area); i++){
+    potential_friend = users_in_area[i];
+    /* Add pop up stuff here */
+}
+
 
 // Call the function with sample parameters
-createUser(25, 'John', 'Doe', 'johndoe');
+/*createUser(25, 'John', 'Doe', 'johndoe');
 updateLocation("johndoe", 38.2, 20.4)
 updateAgeRange("johndoe", 50, 89)
 updateDistRange("johndoe", 500)
-//addInterest("johndoe", "Anime kawaii")
+addInterest("johndoe", "Anime kawaii")
 removeInterest("johndoe", "Anime kawaii")
-//addFriend("johndoe", "CringeyNithin")
+addFriend("johndoe", "CringeyNithin")
 removeFriend("johndoe", "CringeyNithin")
-//rejectFriend("johndoe", "Nithin")
+rejectFriend("johndoe", "Nithin")
 removeRejectedFriend("johndoe", "Nithin")
 findUsersInRange("johndoe")
-getUserData("johndoe")
+getUserData("johndoe")*/
