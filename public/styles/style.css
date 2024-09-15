@@ -591,13 +591,13 @@ span.psw {
 }
 
 .fpshow {
-  bottom: 9.5vh;
+  bottom: 6vh;
   opacity: 100%;
   transition: bottom 0.5s ease, opacity 0.5s ease;
 }
 
-/*form pop up for Messaging list items*/
-.form-popup-Messaging {
+/*form pop up for Interest list items*/
+.form-popup-interest {
     position: fixed;
     left: 0%;
     bottom: 100%;
@@ -635,7 +635,6 @@ span.psw {
 
 /* Full-width input fields */
 .form-container input[type=text], .form-container input[type=number], .form-container input[type=password] {
-  width: 100%;
   padding: 12px 12px 12px;
   font-size: 16px;
   margin: 8px 0px 8px 0px;

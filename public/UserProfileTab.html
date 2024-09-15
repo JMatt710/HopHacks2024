@@ -18,8 +18,9 @@
                 <tr style = "width: 100vw;">
                     <td style = "width: 5%"></td>
                     <td style = "width: 45%"><p style = "font-weight: bold !important; text-align: left !important">Profile</p></td>
-                    <td style = "width: 38%"></td>
+                    <td style = "width: 30%"></td>
                     
+                    <td style = "width: 8%" class = "menuicon" onclick="toggleInterestForm();" id = "plus">+</td>
                     <td style = "width: 8%" class = "menuicon" onclick="toggleMenu();" id = "hamburger">&#8801;</td>
                     <td style = "width: 4%"></td>
                 </tr>
@@ -28,7 +29,17 @@
         <div style = "height: 9.5vh">
             <!-- padding space -->
         </div>
-        <div class="menu hide" id="menu" style = "height: 30% !important">
+        <div class="form-popup-interest" id="myFormInterest" style="padding-top: 25vh;">
+            <form class="form-container">
+                <h2 style="padding: 2%; text-align: center">Add an Interest of Yours</h2>
+                <label for="Interest"><span>Interest</span></label>
+                <input type="text" placeholder="Enter Interest" name="interest" id="interest" style = "width: calc(100% - 24px) !important" onclick = "" required/>
+                
+                <button type="button" style = "width: 49%"  class="btn" onclick="toggleInterestForm(); updateInterests(); displayProfile()">Enter</button>
+                <button type="button" style = "width: 49%" class="btn cancel" onclick="toggleInterestForm()">Close</button>     
+            </form>
+        </div>
+        <div class="menu hide" id="menu" style = "height: 21% !important">
             <table style="width: 100% !important;">
                 <tr>
                     <td>
@@ -68,18 +79,10 @@
                     </tr>
                     <tr>
                         <td style = "width: 25%">
-                            <label for="interestsInput"><span>Preferences</span></label>    
-                        </td>
-                        <td style = "width: 75%">
-                            <input type="text" placeholder="Enter Interests" name="interestsInput" value="" id="interestsInput" onclick = ""/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style = "width: 25%">
                             <label for="ageRangeMinInput"><span>Preferend Age Range</span></label>
                         </td>
                         <td style = "width: 75%">
-                            <input type="number" min="18" max="122" id="ageRangeMinInput" onclick = ""/>
+                            <input type="number" min="18" max="122" id="ageRangeMinInput" onclick = ""/> -
                             <input type="number" min="18" max="122" id="ageRangeMaxInput" onclick = ""/>
                         </td>
                     </tr>

@@ -37,13 +37,33 @@ user1.LocationArr.push(6548);
 user1.LocationArr.push(1538);
 
 function updateUserInfo(){
-    user1.Name = document.getElementById("nameInput");
-    user1.Age = document.getElementById("ageInput");
-    user1.InterestsArr = document.getElementById("interestsInput");
-    user1.AgeRangeArr[0] = document.getElementById("ageRangeMinInput");
-    user1.AgeRangeArr[1] = document.getElementById("ageRangeMaxInput");
-    user1.LocationEnabled = document.getElementById("locationEnabledInput");
-    user1.bioInput = document.getElementById("bioInput");
+    if(document.getElementById("nameInput").value != ""){user1.Name = document.getElementById("nameInput").value};
+    if(document.getElementById("ageInput").value != ""){user1.Age = document.getElementById("ageInput").value};
+    if(document.getElementById("ageRangeMinInput").value != ""){user1.AgeRangeArr[0] = document.getElementById("ageRangeMinInput").value};
+    if(document.getElementById("ageRangeMaxInput").value != ""){user1.AgeRangeArr[1] = document.getElementById("ageRangeMaxInput").value};
+    if(document.getElementById("bioInput").value != ""){user1.bioInput = document.getElementById("bioInput").value};
+    displayProfile();
+    flushInputsUserInfo()
+}
+
+function flushInputsUserInfo(){
+    /* new function to clear all of the input fields on the form, in order to account for the new implementation of the form*/
+    document.getElementById('nameInput').value = '';
+    document.getElementById('ageInput').value = '';
+    document.getElementById('ageRangeMinInput').value = '';
+    document.getElementById('ageRangeMaxInput').value = '';
+    document.getElementById('bioInput').value = '';
+}
+
+function updateInterests(){
+    user1.InterestsArr.push(document.getElementById("interest").value);
+    displayProfile();
+    flushInputsInterests();
+}
+
+function flushInputsInterests(){
+    /* new function to clear all of the input fields on the form, in order to account for the new implementation of the form*/
+    document.getElementById('interest').value = '';
 }
 
 /*MAP FUNCTIONS START*/
@@ -66,6 +86,16 @@ function toggleForm() { // opens/closes the form to enter food items to your Map
         myForm.className = "form-popup fpshow";
         plus.className = "menuicon toggled";
     } 
+}
+
+function toggleInterestForm(){
+    if (myFormInterest.className === "form-popup-interest fpsshow"){
+        myFormInterest.className = "form-popup-interest";
+        plus.className = "menuicon";
+    } else {
+        myFormInterest.className = "form-popup-interest fpsshow";
+        plus.className = "menuicon toggled";
+    }
 }
 
 function displayAllFriendsListItems(){
@@ -100,6 +130,13 @@ function deleteItem(input, index){
     displayAllFriendsListItems();
 }
 
+function deleteInterest(input, index){
+    var element = input;
+    element.remove();
+    user1.InterestsArr.splice(index, 1);
+    displayProfile();
+}
+
 function displayProfile(){
    var results = "<div class=\"profile-item-grid\">" +
         "<div class=\"profile-item-grid-item\" style=\"text-align: center;\">" +
@@ -112,7 +149,7 @@ function displayProfile(){
             "<span style = \"font-style: italic\">" + user1.bioInput + "</span>" +
         "</div>" +
          "<div class=\"profile-item-grid-item\" style=\"padding-top: 25px; font-size: 2rem;\"> Interests </div>" +
-    "</div>" + "<table class = \"carttable\" >";
+    "</div>" + "<table class = \"carttable\" style=\"margin-bottom: 100px;\">";
    
     let num = 0;
     for(let i in user1.InterestsArr){
@@ -121,7 +158,7 @@ function displayProfile(){
             "<td id = \"foodWidth" + i + "\" + style = \"width: 93%\">";
             results = results + "<h3 style = \"text-decoration: none\" id = \"itemLabel" + i + "\">" +  user1.InterestsArr[i] + "</h3>" +
             "</td>" +
-            "<td style = \"width: 7%; text-align: center\" onclick = \"deleteItem(this.parentElement," + i + ")\">" +
+            "<td style = \"width: 7%; text-align: center\" onclick = \"deleteInterest(this.parentElement," + i + ")\">" +
                 "<h3>x</h3>" +
             "</td>" +
         "</tr>";
