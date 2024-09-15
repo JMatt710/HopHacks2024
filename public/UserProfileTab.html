@@ -12,7 +12,7 @@
         <script src="scripts/Functionality.js"></script>
     </head>
 
-    <body onload="" ontouchstart = "">
+    <body onload="displayProfile()" ontouchstart = "">
         <div class = "navbar upper">
             <table class = "navcont" style = "font-size: 1.9rem">
                 <tr style = "width: 100vw;">
@@ -96,38 +96,9 @@
                 <button type="button" class="btn cancel" onclick="toggleProfileForm(); updateUserInfo();">Close</button>     
             </form>
         </div>
-        <!-- PUT PAGE CONTENT HERE -->
-
-
-    <div class="profile-item-grid">
-        <div class="profile-item-grid-item" style="text-align: center;">
-            <img src="images/pfp.png" alt="" style="width:256px;height: 256px;">
-
-            <div style="font-size: 1.8rem;" id="name">Hello!<br/>Please update your information by selecting <span style = "font-weight: bold">Edit Profile </span>in the menu.<br/><br/></div>
-        </div>
-        <div class="profile-item-grid-item">
-            Allergens
-            <p id="allergens" class="profile-text-content"><span style = "font-style: italic">none</span></p>
-        </div>
-        <div class="profile-item-grid-item">
-            Preferences
-            <p id="preferences" class="profile-text-content"><span style = "font-style: italic">none</span></p>
-
-        </div>
-        <div class="profile-item-grid-item">
-            Skill Level
-            <p id="skill" class="profile-text-content"><span style = "font-style: italic">none</span></p>
-
-        </div>
-        <div class="profile-item-grid-item">
-            Notes
-            <p id="notes" class="profile-text-content"><span style = "font-style: italic">none</span></p>
-
-        </div>
-        <div class="profile-item-grid-item">
-            <br/>
-        </div>
-    </div>
+        
+<!-- PUT PAGE CONTENT HERE -->
+<div id = "resultProfile" > </div>
 
     <div class = "navbar lower">
             <table class = "navcont">

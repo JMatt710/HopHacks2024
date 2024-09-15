@@ -69,16 +69,14 @@ function toggleForm() { // opens/closes the form to enter food items to your Map
 }
 
 function displayAllFriendsListItems(){
-    console.log(":((((((((((((((((((((((");
-    console.log(user1.FriendsArr[0]);
     var results = "<table class = \"carttable\" >";
    
     let num = 0;
     for(let i in user1.FriendsArr){
         results = results + 
         "<tr class = \"cartitem\">" +
-            "<td id = \"foodWidth" + i + "\" + style = \"width: 86%\">";
-            results = results + "<h3 style = \"text-decoration: none\" id = \"itemLabel" + i + "\">" +  user1.FriendsArr[i] /*+ " "  + getProfilePic.(user1.FriendsArr[i])*/ + "</h3>";
+            "<td id = \"foodWidth" + i + "\" + style = \"width: 93%\">";
+            results = results + "<h3 style = \"text-decoration: none\" id = \"itemLabel" + i + "\">" +  user1.FriendsArr[i] /*+ " "  + getProfilePic.(user1.FriendsArr[i])*/ + "</h3>" +
             "</td>" +
             "<td style = \"width: 7%; text-align: center\" onclick = \"deleteItem(this.parentElement," + i + ")\">" +
                 "<h3>x</h3>" +
@@ -92,12 +90,47 @@ function displayAllFriendsListItems(){
     if (num == 0){
         results = "<div style = \"width: 91%; margin: auto\"><p style = \"font-size: 1.25rem\">You currently have no friends, go out there and meetcute! </p></div>" + results
     }
-    
-    //myFormFriends.className = "form-popup-friends";
-    //plus.className = "menuicon";
-    //flushInputsFriendsList();
     document.getElementById("resultFriendsList").innerHTML = results;
 }
+
+function deleteItem(input, index){
+    var element = input;
+    element.remove();
+    user1.FriendsArr.splice(index, 1);
+    displayAllFriendsListItems();
+}
+
+// function displayProfile(){
+//    var results = "<p>" + user1.Name + " | "  + user1.Age +"</p>" +
+//    "<div class=\"profile-item-grid\">"
+//         "<div class=\"profile-item-grid-item\" style=\"text-align: center;\">" +
+//             "<img src=\"" + images/pfp.png + "\" alt=\"" style="border-radius: 50%">
+//         </div>
+//         <div class="profile-item-grid-item">
+//             Allergens
+//             <p id="allergens" class="profile-text-content"><span style = "font-style: italic">none</span></p>
+//         </div>
+//         <div class="profile-item-grid-item">
+//             Preferences
+//             <p id="preferences" class="profile-text-content"><span style = "font-style: italic">none</span></p>
+
+//         </div>
+//         <div class="profile-item-grid-item">
+//             Skill Level
+//             <p id="skill" class="profile-text-content"><span style = "font-style: italic">none</span></p>
+
+//         </div>
+//         <div class="profile-item-grid-item">
+//             Notes
+//             <p id="notes" class="profile-text-content"><span style = "font-style: italic">none</span></p>
+
+//         </div>
+//         <div class="profile-item-grid-item">
+//             <br/>
+//         </div>
+//     </div>"
+//    document.getElementById("resultProfile").innerHTML = results;
+// }
 
 function notYetImplemented(i, j){
     document.getElementById("result").innerHTML = "<h1>Sorry! This Feature is not yet implemented" +
