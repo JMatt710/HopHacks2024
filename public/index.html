@@ -15,7 +15,7 @@
             @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
         </style>-->
         <script type="text/javascript" src="scripts/menu.js"></script>
-        <script src="scripts/Functionality.js"></script>
+        <script src="scripts/Functionality.js" defer></script>
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
         crossorigin=""/>
@@ -66,8 +66,8 @@
             <form class="form-container">
                 <h2 style="padding: 2%; text-align: center">You got a match!</h2>
                 
-                <button type="button" style = "width: 49%" class="btn" onclick="formatToAdd(); hideOSKeyboard();">Enter</button>
-                <button type="button" style = "width: 49%" class="btn cancel" onclick="displayAllFood(); hideOSKeyboard();">Close</button>     
+                <button type="button" style = "width: 49%" class="btn" onclick="closePopUp();">Accept</button>
+                <button type="button" style = "width: 49%" class="btn cancel" onclick="closePopUp()">Decline</button>     
             </form>
             <!--<button style="bottom:11%; right:2%" class="open-button" onclick="openForm()"><p>+</p></button>-->
         </div>

@@ -88,6 +88,26 @@ function toggleForm() { // opens/closes the form to enter food items to your Map
     } 
 }
 
+document.addEventListener("DOMContentLoaded", function() {
+    // Function to open the form
+    function openForm() {
+        myForm.className = "form-popup fpsshow";
+        console.log("Pop up should appear")
+       // document.getElementById("popupMessage").textContent = "You got a match! :D"; // Update the popup message
+        //document.getElementById("myForm").style.display = "block"; // Show the popup
+    }
+
+    // Function to close the form
+    function closeForm() {
+        document.getElementById("myForm").style.display = "none"; // Hide the popup
+    }
+
+    // Trigger the popup after 15 seconds (15,000 milliseconds)
+    setTimeout(openForm, 15000);
+});
+function closePopUp(){
+    myForm.className = "form-popup";
+}
 function toggleInterestForm(){
     if (myFormInterest.className === "form-popup-interest fpsshow"){
         myFormInterest.className = "form-popup-interest";
