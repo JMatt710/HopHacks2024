@@ -100,37 +100,37 @@ function deleteItem(input, index){
     displayAllFriendsListItems();
 }
 
-function displayProfile(){
-   var results = "<p>" + user1.Name + " | "  + user1.Age +"</p>" +
-   "<div class=\"profile-item-grid\">"
-        "<div class=\"profile-item-grid-item\" style=\"text-align: center;\">" +
-            "<img src=\"" + images/pfp.png + "\" alt=\"" style="border-radius: 50%">
-        </div>
-        <div class="profile-item-grid-item">
-            Allergens
-            <p id="allergens" class="profile-text-content"><span style = "font-style: italic">none</span></p>
-        </div>
-        <div class="profile-item-grid-item">
-            Preferences
-            <p id="preferences" class="profile-text-content"><span style = "font-style: italic">none</span></p>
+// function displayProfile(){
+//    var results = "<p>" + user1.Name + " | "  + user1.Age +"</p>" +
+//    "<div class=\"profile-item-grid\">"
+//         "<div class=\"profile-item-grid-item\" style=\"text-align: center;\">" +
+//             "<img src=\"" + images/pfp.png + "\" alt=\"" style="border-radius: 50%">
+//         </div>
+//         <div class="profile-item-grid-item">
+//             Allergens
+//             <p id="allergens" class="profile-text-content"><span style = "font-style: italic">none</span></p>
+//         </div>
+//         <div class="profile-item-grid-item">
+//             Preferences
+//             <p id="preferences" class="profile-text-content"><span style = "font-style: italic">none</span></p>
 
-        </div>
-        <div class="profile-item-grid-item">
-            Skill Level
-            <p id="skill" class="profile-text-content"><span style = "font-style: italic">none</span></p>
+//         </div>
+//         <div class="profile-item-grid-item">
+//             Skill Level
+//             <p id="skill" class="profile-text-content"><span style = "font-style: italic">none</span></p>
 
-        </div>
-        <div class="profile-item-grid-item">
-            Notes
-            <p id="notes" class="profile-text-content"><span style = "font-style: italic">none</span></p>
+//         </div>
+//         <div class="profile-item-grid-item">
+//             Notes
+//             <p id="notes" class="profile-text-content"><span style = "font-style: italic">none</span></p>
 
-        </div>
-        <div class="profile-item-grid-item">
-            <br/>
-        </div>
-    </div>"
-   document.getElementById("resultProfile").innerHTML = results;
-}
+//         </div>
+//         <div class="profile-item-grid-item">
+//             <br/>
+//         </div>
+//     </div>"
+//    document.getElementById("resultProfile").innerHTML = results;
+// }
 
 function notYetImplemented(i, j){
     document.getElementById("result").innerHTML = "<h1>Sorry! This Feature is not yet implemented" +
